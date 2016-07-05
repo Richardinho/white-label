@@ -1,0 +1,73 @@
+/* box sizing border box */
+html {
+	box-sizing: border-box;
+}
+
+body {
+	font-family : ubuntu;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+/* image replacement */
+.image-replacement{
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/* clearfix */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+
+/* media object */
+.media {
+}
+.media, .media-body {
+	overflow : hidden;
+}
+.media .media-image {
+	float:left;
+	margin-right: .6em;
+}
+.media .media-image img{
+	display:block;
+}
+.media .imgExt{
+	float:right;
+	margin-left: 10px;
+}
+
+h2, h3 {
+	font-weight : normal;
+	line-height : 1;
+	margin : 0;
+}
+
+h2 {
+	padding : .2em 0;
+	font-size : 1.4em;
+	font-weight : bold;
+}
+
+h3{
+	padding : .4em 0;
+	font-size : 1.2em;
+}
+h3 a {
+	text-decoration : none;
+}
+

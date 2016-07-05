@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<link href='../reset.css' rel='stylesheet'>
+	<link href='../utils.css' rel='stylesheet'>
+	<link href='main.css' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<style>
+		body {
+		padding : 100px;
+		}
+		.pagination {
+		margin-bottom : 12px;
+		}
+		._20px {
+		font-size : 20px;
+		}
+		._10px {
+		font-size : 10px;
+		}
+		.menu {
+			margin : 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="menu _20px">
+	<h2>Filters</h2>
+	<ul class="filters">
+		<li>
+			<h3>Star ratings</h3>
+			<div>
+				<div class="styled-radio-block">
+					<input id="stars-filter-1" name="star-rating-filter" value="1" type="radio">
+					<label for="stars-filter-1" class="styled-radio"></label>
+					<label for="stars-filter-1">1</label>
+				</div>
+				<div class="styled-radio-block">
+					<input id="stars-filter-2" name="star-rating-filter" value="1" type="radio" checked>
+					<label for="stars-filter-2" class="styled-radio"></label>
+					<label for="stars-filter-2">2</label>
+				</div>
+				<div class="styled-radio-block">
+					<input id="stars-filter-3" name="star-rating-filter" value="1" type="radio">
+					<label for="stars-filter-3" class="styled-radio"></label>
+					<label for="stars-filter-3">3</label>
+				</div>
+				<div class="styled-radio-block">
+					<input id="stars-filter-4" name="star-rating-filter" value="1" type="radio">
+					<label for="stars-filter-4" class="styled-radio"></label>
+					<label for="stars-filter-4">4</label>
+				</div>
+			</div>
+		</li>
+		<li class="range-filters">
+			<label for="min-cost">price</label>
+			<input id="min-cost" type="range" step="1" min="0" max="100">
+			<label for="min-cost">5</label>
+		</li>
+		<li class="range-filters">
+			<label for="user-rating">price</label>
+			<input id="user-rating" type="range" step="1" min="0" max="10">
+			<label for="user-rating">3</label>
+		</li>
+	</ul>
+	<h3>Sort by</h3>
+	<div>
+		<div class="styled-radio-block">
+			<input id="distance-filter" type="radio" name="sort" value="distance">
+			<label for="distance-filter" class="styled-radio"></label>
+			<label for="distance-filter">distance</label>
+		</div>
+		<div class="styled-radio-block">
+			<input id="stars-filter" type="radio" name="sort" value="stars">
+			<label for="stars-filter" class="styled-radio" checked></label>
+			<label for="stars-filter">distance</label>
+		</div>
+		<div class="styled-radio-block">
+			<input id="price-filter" type="radio" name="sort" value="mincost" checked>
+			<label for="price-filter" class="styled-radio"></label>
+			<label for="price-filter">min cost</label>
+		</div>
+		<div class="styled-radio-block">
+			<input id="user-rating-filter" type="radio" name="sort" value="userrating">
+			<label for="user-rating-filter" class="styled-radio"></label>
+			<label for="user-rating-filter">user-rating</label>
+		</div>
+	</div>
+</div>
+	<div class="menu _10px">
+	<h2>Filters</h2>
+	<ul class="filters">
+		<li>
+			<h3>Star ratings</h3>
+			<div>
+				<div class="styled-radio-block">
+					<input id="bstars-filter-1" name="bstar-rating-filter" value="1" type="radio">
+					<label for="bstars-filter-1" class="styled-radio"></label>
+					<label for="bstars-filter-1">1</label>
+				</div>
+				<div class="styled-radio-block">
+					<input id="bstars-filter-2" name="bstar-rating-filter" value="1" type="radio">
+					<label for="bstars-filter-2" class="styled-radio"></label>
+					<label for="bstars-filter-2">2</label>
+				</div>
+				<div class="styled-radio-block">
+					<input id="bstars-filter-3" name="bstar-rating-filter" value="1" type="radio" checked>
+					<label for="bstars-filter-3" class="styled-radio"></label>
+					<label for="bstars-filter-3">3</label>
+				</div>
+				<div class="styled-radio-block">
+					<input id="bstars-filter-4" name="bstar-rating-filter" value="1" type="radio">
+					<label for="bstars-filter-4" class="styled-radio"></label>
+					<label for="bstars-filter-4">4</label>
+				</div>
+			</div>
+		</li>
+		<li class="range-filters">
+			<label for="bmin-cost">price</label>
+			<input id="bmin-cost" type="range" step="1" min="0" max="100">
+			<label for="bmin-cost">5</label>
+		</li>
+		<li class="range-filters">
+			<label for="buser-rating">price</label>
+			<input id="buser-rating" type="range" step="1" min="0" max="10">
+			<label for="buser-rating">3</label>
+		</li>
+	</ul>
+	<h3>Sort by</h3>
+	<div>
+		<div class="styled-radio-block">
+			<input id="bdistance-filter" type="radio" name="bsort" value="distance">
+			<label for="bdistance-filter" class="styled-radio"></label>
+			<label for="bdistance-filter">distance</label>
+		</div>
+		<div class="styled-radio-block">
+			<input id="bstars-filter" type="radio" name="bsort" value="stars" checked>
+			<label for="bstars-filter" class="styled-radio"></label>
+			<label for="bstars-filter">distance</label>
+		</div>
+		<div class="styled-radio-block">
+			<input id="bprice-filter" type="radio" name="bsort" value="mincost">
+			<label for="bprice-filter" class="styled-radio"></label>
+			<label for="bprice-filter">min cost</label>
+		</div>
+		<div class="styled-radio-block">
+			<input id="buser-rating-filter" type="radio" name="bsort" value="userrating">
+			<label for="buser-rating-filter" class="styled-radio"></label>
+			<label for="buser-rating-filter">user-rating</label>
+		</div>
+	</div>
+</div>
+</body>
+</html>

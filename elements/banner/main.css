@@ -1,0 +1,39 @@
+.banner {
+	font-size : 20px;
+	border-bottom : solid 2px lightgray;
+	background : white;
+	position : relative;
+
+}
+
+.banner h1 {
+	margin : 0;
+	line-height : 1;
+	font-size : 2em;
+	color : gray;
+	padding : .5em 0;
+	text-align : right;
+
+}
+.banner h1 a {
+	text-decoration : none;
+	color : inherit;
+}
+
+.banner:before,
+.banner:after {
+	border-bottom : solid 2px lightgrey;
+	content : '';
+	background : inherit;
+	height : calc(100% + 2px);
+	top : 0;
+	position : absolute;
+	width : calc(50vw - 50%);
+}
+.banner:before {
+	right : 100%;
+}
+.banner:after {
+	left : 100%;
+}
+

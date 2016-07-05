@@ -1,0 +1,28 @@
+
+.btn {
+	text-decoration : none;
+	text-transform : uppercase;
+	display : inline-block;
+	color : black;
+	background : lightgrey;
+	padding : 0.75em 1.125em;
+	font-family : Ubuntu;
+	border-radius : 0.626em;
+	font-size : 1em;
+}
+
+.btn  > svg {
+	width : 1.5em;
+	margin-right : .25em;
+}
+
+.btn  > svg, .btn > span{
+	display : inline-block;
+	fill : black;
+	vertical-align : middle;
+}
+
+.btn:hover {
+	background : grey;
+}
+

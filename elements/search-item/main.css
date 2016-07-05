@@ -1,0 +1,18 @@
+.search-result-item {
+	background : #eee;
+	padding : 2em;
+}
+
+.search-result-item img {
+	width : 10em;
+}
+
+.search-result-item .add-info {
+	padding : .4em 0;
+	line-height : 1;
+	color : #666;
+}
+
+.search-result-item h3 a {
+	color : #333;
+}
