@@ -17,6 +17,11 @@ describe('delegate()', function () {
 				expect(splitEventFromSelector('click #foo')).toEqual(['click', '#foo']);
 			});
 		});
+		describe('When key is \'click #foo > div .bar\'', function () {
+			it('should return [\'click\', \'#foo > div .bar\']', function () {
+				expect(splitEventFromSelector('click #foo > div .bar')).toEqual(['click', '#foo > div .bar']);
+			});
+		});
 	});
 
 	describe('when event is fired on target element', function () {
