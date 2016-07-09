@@ -2,31 +2,40 @@ function delegate(el, config) {
 
 	Object.keys(config).forEach(function (key) {
 		var listener = config[key];
+		var event;
+		var selector;
 
-		var eventSelector = splitEventFromSelector(key);
-
-		var event = eventSelector[0];
-		var selector = eventSelector[1];
+		if(key.search(/\s/) == -1) {
+			event = key;
+		} else {
+			var eventSelector = splitEventFromSelector(key);
+			event = eventSelector[0];
+			selector = eventSelector[1];
+		}
 
 		el.addEventListener(event, function (event) {
-			var target = event.target;
-
-			while(target !== el) {
+			if(!selector) {
+				listener(event);
+			} else {
+				var target = event.target;
+				while(target !== el) {
 					if (target.matches(selector)) {
-						listener(convertEvent(event, target, event.target))
+						listener(convertEvent(event, el, target))
 					}
 					target = target.parentNode
 				}
+			}
 		});
 	});
 }
 
 function splitEventFromSelector(srcString) {
-	return srcString.match(/^(\S+)\s(.*)/).slice(1);
+	return srcString.match(/^(\S+)\s+(\S.*)?$/).slice(1);
 }
 
 function convertEvent(event, currentTarget, target){
-	event.target = target;
-	event.currentTarget = currentTarget;
-	return event;
+	return Object.assign({}, event, {
+		currentTarget : currentTarget,
+		target : target
+	});
 }
