@@ -2,8 +2,7 @@ var TemplateEngine = function(tpl, data) {
 		var re = /<%([^%>]+)?%>/g,
 		    code = 'var r=[];\n',
 		    cursor = 0,
-		    match,
-		    addHTML = getAddHTML();
+		    match;
 
 		while(match = re.exec(tpl)) {
 			code+= addHTML(tpl.slice(cursor, match.index));
@@ -15,11 +14,9 @@ var TemplateEngine = function(tpl, data) {
 		return new Function(code.replace(/[\r\t\n]/g, '')).apply(data);
 }
 
-function getAddHTML() {
-	return function (line) {
-		//  double backslash all double quotes
-		return 'r.push("' + line.replace(/"/g, '\\"') + '");\n';
-	}
+function addHTML(line) {
+	//  double backslash all double quotes
+	return 'r.push("' + line.replace(/"/g, '\\"') + '");\n';
 }
 
 function addJS(line) {
