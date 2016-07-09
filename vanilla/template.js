@@ -1,30 +1,31 @@
-var TemplateEngine = function(html, options) {
+var TemplateEngine = function(tpl, data) {
+		var re = /<%([^%>]+)?%>/g,
+		    code = 'var r=[];\n',
+		    cursor = 0,
+		    match,
+		    addHTML = getAddHTML();
 
-	var re = /<%([^%>]+)?%>/g,
-	    reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g,
-	    code = 'var r=[];\n',
-	    cursor = 0,
-	    match;
-
-	var add = function(line, js) {
-		js? (code += line.match(reExp) ? line + '\n' : 'r.push(' + line + ');\n') :
-			(code += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
-		return add;
-	}
-
-	while(match = re.exec(html)) {
-		add(html.slice(cursor, match.index))(match[1], true);
-		cursor = match.index + match[0].length;
-	}
-
-	add(html.substr(cursor, html.length - cursor));
-	code += 'return r.join("");';
-	return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
+		while(match = re.exec(tpl)) {
+			code+= addHTML(tpl.slice(cursor, match.index));
+			code+= addJS(match[1]);
+			cursor = match.index + match[0].length;
+		}
+		code += addHTML(tpl.substr(cursor, tpl.length - cursor));
+		code += 'return r.join("");'; // <-- return the result
+		return new Function(code.replace(/[\r\t\n]/g, '')).apply(data);
 }
 
-var template = '<p>Hello, my name is <%name%>. I\'m <%age%> years old.</p>';
+function getAddHTML() {
+	return function (line) {
+		//  double backslash all double quotes
+		return 'r.push("' + line.replace(/"/g, '\\"') + '");\n';
+	}
+}
 
-console.log(TemplateEngine(template, {
-	name: "Krasimir",
-	age: 29
-}));
+function addJS(line) {
+	if(line.match(/(^(\s)?(if|for|else|switch|case|break|{|}))(.*)?/g)){
+		return line + '\n';
+	} else {
+		return 'r.push(' + line + ');\n';
+	}
+}

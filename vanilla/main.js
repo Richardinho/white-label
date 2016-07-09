@@ -1,83 +1,34 @@
-crossroads.addRoute('foo');
-crossroads.addRoute('lorem/ipsum');
-crossroads.routed.add(console.log, console); //log all routes
 
-//setup hasher
-function parseHash(newHash, oldHash){
-  crossroads.parse(newHash);
-}
-hasher.initialized.add(parseHash); //parse initial hash
-hasher.changed.add(parseHash); //parse hash changes
-hasher.init(); //start listening for history change
-
-//update URL fragment generating new history record
-hasher.setHash('lorem/ipsum');
-
-function delegate(el, config) {
-
-	Object.keys(config).forEach(function (key) {
-		var listener = config[key];
-
-		var eventSelector = key.match(/^(\S+)\s(.*)/).slice(1);
-
-		var event = eventSelector[0];
-		var selector = eventSelector[1];
-
-		el.addEventListener(event, function (event) {
-			var target = event.target;
-
-			while(target !== el) {
-					if (target.matches(selector)) {
-						listener(convertEvent(event, target, event.target))
-					}
-					target = target.parentNode
-				}
-		});
-	});
-}
-
-function convertEvent(event, currentTarget, target){
-	event.target = target;
-	event.currentTarget = currentTarget;
-	return event;
-}
-
-function render(appEl) {
+function render(el, template) {
 	return function (data) {
 		function clickListener(event) {
 			event.preventDefault();
-			console.log('hello', event.target, event.currentTarget);
+			console.log('skill:', event.target.textContent);
 		}
-		var el = document.createElement('div');
-		el.innerHTML = '<div class="foo"><div><a href="#">' + data.alpha  + '</a></div></div>';
 		delegate(el, {
-			'click .foo div [href]' : clickListener
+			'click a' : clickListener
 		});
-		appEl.innerHTML = '';
-		appEl.appendChild(el);
+		el.innerHTML = TemplateEngine(template, data);
 	}
 }
 
-routes = {
-	'products:param' : 'products',
-	'filters:param' : 'filters'
-}
-
-function queryString() {
-
-}
 
 function getData() {
-
 	return new Promise(function (resolve, reject) {
 		resolve({
-			alpha : 'alpha'
+			name : 'Richard',
+			showSkills : true,
+			skills : [
+			  'html', 'js', 'art', 'business'
+			]
 		});
 	});
 }
 
+var el = document.getElementById('app');
+var template = document.getElementById('my-template').textContent;
 function products() {
-	getData(queryString()).then(render(document.body));
+	getData().then(render(el, template));
 }
 
 products();

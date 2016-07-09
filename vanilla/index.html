@@ -4,10 +4,28 @@
 
 	</head>
 <body>
-<script src='node_modules/signals/dist/signals.js'></script>
-<script src='node_modules/hasher/dist/js/hasher.js'></script>
-<script src='node_modules/crossroads/dist/crossroads.js'></script>
-<script src='main.js'></script>
 
+	<div id='app'></div>
+
+	<script type='text/html' id='my-template'>
+		<h1><% this.name %></h1>
+		<%if(this.showSkills) {%>
+		<ul>
+			<%for(var index in this.skills) {%>
+			<li><a href="#"><%this.skills[index]%></a></li>
+			<%}%>
+		</ul>
+		<%} else {%>
+		<p>none</p>
+		<%}%>
+	</script>
+
+
+
+
+
+	<script src='delegate.js'></script>
+	<script src='template.js'></script>
+	<script src='main.js'></script>
 </body>
 </html>

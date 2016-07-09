@@ -36,6 +36,8 @@ function splitEventFromSelector(srcString) {
 function convertEvent(event, currentTarget, target){
 	return Object.assign({}, event, {
 		currentTarget : currentTarget,
-		target : target
+		target : target,
+		preventDefault : event.preventDefault.bind(event),
+		stopPropagation : event.stopPropagation.bind(event)
 	});
 }
