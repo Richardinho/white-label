@@ -1,3 +1,6 @@
+//  adapted from Krasimir Tsonev's 20 line template engine
+//  http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line
+
 var TemplateEngine = function(tpl, data) {
 		var re = /<%([^%>]+)?%>/g,
 		    code = 'var r=[];\n',
