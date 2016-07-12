@@ -1,17 +1,18 @@
 
+function handleInternalLink(event) {
+	event.preventDefault();
+	var href = event.target.getAttribute('href');
+	navigate(href);
+}
+
 function render(el, template) {
 	return function (data) {
-		function clickListener(event) {
-			event.preventDefault();
-			console.log('skill:', event.target.textContent);
-		}
 		delegate(el, {
-			'click a' : clickListener
+			'click [data-internal-link]' : handleInternalLink
 		});
 		el.innerHTML = TemplateEngine(template, data);
 	}
 }
-
 
 function getData() {
 	return new Promise(function (resolve, reject) {
@@ -27,8 +28,12 @@ function getData() {
 
 var el = document.getElementById('app');
 var template = document.getElementById('my-template').textContent;
-function products() {
-	getData().then(render(el, template));
-}
 
-products();
+getData().then(render(el, template));
+
+startRouter();
+
+
+
+
+
