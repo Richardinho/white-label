@@ -1,8 +1,9 @@
+var router = new Router();
 
 function handleInternalLink(event) {
 	event.preventDefault();
 	var href = event.target.getAttribute('href');
-	navigate(href);
+	router.navigate(href);
 }
 
 function render(el, template) {
@@ -31,7 +32,7 @@ var template = document.getElementById('my-template').textContent;
 
 getData().then(render(el, template));
 
-startRouter();
+router.start();
 
 
 
