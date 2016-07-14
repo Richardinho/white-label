@@ -1,4 +1,20 @@
-var router = new Router();
+var router = new Router({
+  'orange/:kind' : orangeController,
+  'apple/:kind' : appleController
+});
+
+function appleController(kind) {
+	var el = document.getElementById('app');
+	var template = document.getElementById('my-template').textContent;
+	getData(kind).then(render(el, template));
+}
+
+function orangeController(kind) {
+	var el = document.getElementById('app');
+	var template = document.getElementById('my-template').textContent;
+	getData(kind).then(render(el, template));
+}
+
 
 function handleInternalLink(event) {
 	event.preventDefault();
@@ -15,22 +31,26 @@ function render(el, template) {
 	}
 }
 
-function getData() {
+function getData(query) {
+
+	var data = {
+		mackintosh : {
+			name : 'Apple Mackintosh'
+		},
+		goldenDelicious : {
+			name : 'Golden Delicious'
+		},
+		grannySmith : {
+			name : 'Granny Smith'
+		},
+		clementine : {
+			name : 'Clementine'
+		}
+	};
 	return new Promise(function (resolve, reject) {
-		resolve({
-			name : 'Richard',
-			showSkills : true,
-			skills : [
-			  'html', 'js', 'art', 'business'
-			]
-		});
+		resolve(data[query]);
 	});
 }
-
-var el = document.getElementById('app');
-var template = document.getElementById('my-template').textContent;
-
-getData().then(render(el, template));
 
 router.start();
 

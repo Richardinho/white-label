@@ -9,15 +9,6 @@
 
 		<script type='text/html' id='my-template'>
 			<h1><% this.name %></h1>
-			<%if(this.showSkills) {%>
-			<ul>
-				<%for(var index in this.skills) {%>
-				<li><a data-internal-link href="<%this.skills[index]%>"><%this.skills[index]%></a></li>
-				<%}%>
-			</ul>
-			<%} else {%>
-			<p>none</p>
-			<%}%>
 		</script>
 	</div>
 
