@@ -1,6 +1,6 @@
 var router = new Router({
-  'orange/:kind' : orangeController,
-  'apple/:kind' : appleController
+	'orange/:kind' : orangeController,
+	'apple/:kind' : appleController
 });
 
 function appleController(kind) {
@@ -14,7 +14,6 @@ function orangeController(kind) {
 	var template = document.getElementById('my-template').textContent;
 	getData(kind).then(render(el, template));
 }
-
 
 function handleInternalLink(event) {
 	event.preventDefault();

@@ -8,7 +8,7 @@ describe('router', function () {
 			routeRegex = 'foobarrouteregex';
 			spyOnHandler = jasmine.createSpy('spyOnHandler');
 			spyOnRouteToRegex = spyOn(Router.prototype, 'routeToRegex').and.returnValue(routeRegex);
-			route = Router.prototype.createRoute({ 'foo/bar' : spyOnHandler });
+			route = Router.prototype.createRoute('foo/bar', spyOnHandler );
 		});
 		it('should return route', function () {
 			expect(route).toEqual({ 'routeRegex' : routeRegex, 'handler' : spyOnHandler });
