@@ -5,6 +5,7 @@
 	color : grey;
 	font-family : ubuntu;
 	position : relative;
+	clear : both;
 }
 .footer:before,
 .footer:after {

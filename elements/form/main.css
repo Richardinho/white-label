@@ -7,8 +7,7 @@ ul, li {
 }
 
 .menu {
-	width : 30%;
-	float : left;
+	font-size : 16px;
 	padding : 1.2em;
 	font-family : ubuntu;
 	background : lightgray;

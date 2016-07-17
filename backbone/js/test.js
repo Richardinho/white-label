@@ -1,9 +1,8 @@
 var Router = Backbone.Router.extend({
 
 	routes : {
-		'' : 'home',
-		'foo' : 'foo',
-		'bar/moo' : 'barmoo'
+		//'' : 'home',
+		'search/(:query)/p:page' : 'barmoo'
 
 	},
 	home : function () {
@@ -14,7 +13,7 @@ var Router = Backbone.Router.extend({
 		console.log('this is the foo controller');
 	},
 	barmoo : function () {
-		console.log('this is barmoo');
+		console.log('this is barmoo', arguments);
 	}
 });
 
