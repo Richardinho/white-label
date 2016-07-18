@@ -32,6 +32,8 @@ Router.prototype = {
 		} else {
 			history.pushState({page: 1}, "title 1", path);
 		}
+		//  call router to update page based on new url
+		this.router();
 	},
 
 	router : function () {

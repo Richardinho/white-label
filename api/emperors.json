@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Augustus",
+    "from": -27,
+    "to" : 14
+  }, {
+    "id": 2,
+    "name": "Tiberius",
+    "from": 14,
+    "to" : 37
+  }, {
+    "id": 3,
+    "name": "Caligula",
+    "from": 37,
+    "to" : 41
+  }, {
+    "id": 4,
+    "name": "Claudius",
+    "from": 41,
+    "to" : 54
+  }, {
+    "id": 5,
+    "name": "Nero",
+    "from": 54,
+    "to" : 68
+  }, {
+    "id": 6,
+    "name": "Galba",
+    "from": 68,
+    "to" : 69
+  }, {
+    "id": 7,
+    "name": "Otho",
+    "from": 69,
+    "to" : 69
+  }, {
+    "id": 8,
+    "name": "Vitellius",
+    "from": 69,
+    "to" : 69
+  }, {
+    "id": 9,
+    "name": "Vespasian",
+    "from": 69,
+    "to": 79
+  }, {
+    "id": 10,
+    "name": "Titus",
+    "from": 79,
+    "to": 81
+  }, {
+    "id": 11,
+    "name": "Domitian",
+    "from": 81,
+    "to": 96
+  }, {
+    "id": 12,
+    "name": "Nerva",
+    "from": 96,
+    "to": 98
+  }, {
+    "id": 13,
+    "name": "Trajan",
+    "from": 98,
+    "to": 117
+  }
+]
