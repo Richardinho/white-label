@@ -52,12 +52,12 @@
 			<h3>Sort by</h3>
 			<div>
 				<div class="styled-radio-block">
-					<input id="reign-sort" type="radio" name="sort-by" value="reign">
+					<input id="reign-sort" type="radio" name="sort-by" value="reign" <% if(this.sortBy=='reign') { %> checked <% } %>>
 					<label for="reign-sort" class="styled-radio"></label>
 					<label for="reign-sort">length of reign</label>
 				</div>
 				<div class="styled-radio-block">
-					<input id="succession-sort" type="radio" name="sort-by" value="succession" checked>
+					<input id="succession-sort" type="radio" name="sort-by" value="succession" <% if(this.sortBy=='succession') { %> checked <% } %>>
 					<label for="succession-sort" class="styled-radio"></label>
 					<label for="succession-sort">succession</label>
 				</div>

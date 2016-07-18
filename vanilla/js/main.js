@@ -22,10 +22,9 @@ function addSection(el, templateId, data) {
 }
 
 function homeController (app) {
-	return function handleRequest() {
+	return function handleRequest(queryString) {
 
-		console.log('handle controller');
-		getData().then(function (model) {
+		getData(queryString).then(function (model) {
 			var el = document.createElement('div');
 			el.className = 'container';
 			app.innerHTML = '';
@@ -70,19 +69,35 @@ function renderResults(el, results) {
 	el.appendChild(frag);
 }
 
-function getData() {
+function getData(queryString) {
 	return fetch('http://localhost:3000/api/emperors').then(function (response) {
 		return response.json().then(function(json) {
-			return createModel(json);
+			return createModel(json, queryString);
 		});
 	});
 }
 
-function createModel(json) {
+function getQueryParams(queryString) {
+	//  http://stevenbenner.com/2010/03/javascript-regex-trick-parse-a-query-string-into-an-object/
+	var queryParams = {};
 
+	queryString.replace(
+	    new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+	    function($0, $1, $2, $3) { queryParams[$1] = $3; }
+	);
+	return queryParams;
+}
+
+function createModel(json, queryString) {
+	var queryParams;
+	if(queryString) {
+		queryParams = getQueryParams(queryString);
+	}
 	return {
 		getRefinements : function () {
-			return {};
+			return {
+				sortBy : queryParams && queryParams['sort-by'] ? queryParams['sort-by'] : 'reign'
+			};
 		},
 		getResults : function () {
 			return json;
