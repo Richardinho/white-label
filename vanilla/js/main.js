@@ -70,7 +70,8 @@ function renderResults(el, results) {
 }
 
 function getData(queryString) {
-	return fetch('http://localhost:3000/api/emperors').then(function (response) {
+
+	return fetch('http://localhost:3000/api/emperors' + '?' + queryString).then(function (response) {
 		return response.json().then(function(json) {
 			return createModel(json, queryString);
 		});
@@ -95,6 +96,7 @@ function createModel(json, queryString) {
 	}
 	return {
 		getRefinements : function () {
+			//  get refinements from query string
 			return {
 				sortBy : queryParams && queryParams['sort-by'] ? queryParams['sort-by'] : 'reign'
 			};
