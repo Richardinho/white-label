@@ -52,12 +52,18 @@
 	}
 
 	function sortBy(data, sortOption) {
-		if(sortOption == 'reign') {
+		if(sortOption == 'reign-asc') {
 			return data.sort(function (a,b) {
 				return getReign(a) - getReign(b);
 			});
+		} else if(sortOption == 'reign-desc'){
+			return data.sort(function (a,b) {
+				return getReign(b) - getReign(a);
+			});
 		} else {
-			return data;
+			return data.sort(function (a,b) {
+				return a.from - b.from;
+			});
 		}
 	}
 

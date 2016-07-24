@@ -101,7 +101,7 @@ function createModel(json, queryString) {
 		getRefinements : function () {
 			//  get refinements from query string
 			return {
-				sortBy : queryParams && queryParams['sort-by'] ? queryParams['sort-by'] : 'reign'
+				sortBy : queryParams && queryParams['sort-by'] ? queryParams['sort-by'] : 'reign-asc'
 			};
 		},
 		getResults : function () {
