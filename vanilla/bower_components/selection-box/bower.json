@@ -1,0 +1,28 @@
+{
+  "name": "selection-box",
+  "description": "Jquery plug in for custom select elements",
+  "authors": [
+    "Richard Hunter"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "jquery",
+    "select",
+    "custom select"
+  ],
+  "homepage": "https://github.com/Richardinho/selection-box",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "scss",
+    "js",
+    "web"
+  ],
+  "dependencies": {
+    "richardUtils": "richy-utils#*"
+  }
+}

@@ -1,0 +1,39 @@
+.selection-box {
+	position: relative;
+}
+
+.selection-box .display-area {
+	border: solid 1px #777;
+}
+
+.selection-box .display-area:focus,
+.selection-box .option:focus {
+	outline-color: lightblue;
+	outline-style: solid;
+}
+
+.selection-box .option-list {
+	list-style: none;
+	background : white;
+	border: solid 1px #777;
+	z-index: 4;
+	display: block;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 4px;
+	width: 100%;
+	overflow : scroll;
+}
+
+.selection-box .option-list.below {
+	top: calc(100% + 6px);
+}
+
+.selection-box .option-list.above {
+	bottom : calc(100% + 6px);
+}
+
+.selection-box[data-state=closed] .option-list {
+	visibility: hidden !important;
+}

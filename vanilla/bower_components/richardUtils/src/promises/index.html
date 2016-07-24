@@ -1,0 +1,30 @@
+<html>
+<head>
+    </head>
+<body>
+
+<h1>PromisesPromises</h1>
+
+<script type="text/javascript" src="Promise.js"></script>
+
+<script>
+
+
+
+    function callback() {
+        console.log('callback', arguments);
+    }
+
+
+    var promise = new PromisesPromise(function(resolve, reject) {
+        console.log('promises');
+            resolve('hello');
+            console.log('resolve');
+    });
+
+    promise.then(callback);
+
+</script>
+
+</body>
+</html>

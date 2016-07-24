@@ -1,0 +1,34 @@
+{
+  "name": "richardUtils",
+  "description": "utility javascript code",
+  "main": "",
+  "authors": [
+    "Richard Hunter"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "utility",
+    "base",
+    "type",
+    "event",
+    "emitters"
+  ],
+  "homepage": "https://github.com/Richardinho/richardUtils",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "docs",
+    ".idea",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "karma.conf.js",
+    "package.json",
+    "test.html",
+    "jasmine",
+    "test",
+    "tests",
+    "Gruntfile.js",
+    "server.js"
+  ]
+}

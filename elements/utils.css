@@ -71,3 +71,32 @@ h3 a {
 	text-decoration : none;
 }
 
+
+#simple-styling-selection-box.selection-box {
+	position: relative;
+}
+
+#simple-styling-selection-box.selection-box .display-area {
+	border: solid 2px black;
+	padding : 12px;
+}
+
+#simple-styling-selection-box.selection-box .option:focus {
+	outline : none;
+	background : grey;
+}
+
+#simple-styling-selection-box.selection-box .option {
+	padding : 12px;
+}
+
+#simple-styling-selection-box.selection-box .option-list {
+	background : white;
+}
+
+#simple-styling-selection-box.selection-box .__selected {
+	font-weight : bold;
+	color : white;
+	background : black;
+}
+

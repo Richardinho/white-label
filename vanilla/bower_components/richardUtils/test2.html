@@ -1,0 +1,33 @@
+<html>
+	<head>
+	</head>
+	<body>
+
+	<ul id='list'>
+		<li tabindex='0'>apple</li>
+		<li tabindex='0'>banana</li>
+		<li tabindex='0'>carrot</li>
+		<li tabindex='0'>donut</li>
+		<li tabindex='0'>eclair
+			<div>
+				<h2 tabindex='0'>I love chocolate eclairs</h2>
+			</div>
+		</li>
+		<li tabindex='0'>fish</li>
+		<li tabindex='0'>gingerbread</li>
+	</ul>
+
+	<script src='src/dom.js'></script>
+	<script>
+
+		domutils.delegate(document.querySelector('#list'),'keyup',  'li', function (event) {
+			console.log('hello', event.target);
+		});
+
+
+
+
+
+	</script>
+	</body>
+<html>

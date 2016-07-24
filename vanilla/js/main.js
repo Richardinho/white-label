@@ -42,6 +42,9 @@ function homeController (app) {
 			el.appendChild(mainEl);
 			addSection(el, 'footer-template', {});
 			app.appendChild(el);
+
+			var simple = new SelectionBox('#simple-styling');
+
 		});
 	}
 }
@@ -55,7 +58,7 @@ function renderAside(el, refinements) {
 	html(el, TemplateEngine(asideTemplate, refinements));
 
 	delegate(el, {
-		'change [name=sort-by]' : handleSortByToggle
+		'change #simple-styling' : handleSortByToggle
 	});
 }
 

@@ -1,0 +1,44 @@
+{
+  "name": "richardUtils",
+  "description": "utility javascript code",
+  "main": "",
+  "authors": [
+    "Richard Hunter"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "utility",
+    "base",
+    "type",
+    "event",
+    "emitters"
+  ],
+  "homepage": "https://github.com/Richardinho/richardUtils",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "docs",
+    ".idea",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "karma.conf.js",
+    "package.json",
+    "test.html",
+    "jasmine",
+    "test",
+    "tests",
+    "Gruntfile.js",
+    "server.js"
+  ],
+  "version": "0.5.0",
+  "_release": "0.5.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.5.0",
+    "commit": "34725368a4589eaf760af7560bdd9676ecfb5cb5"
+  },
+  "_source": "https://github.com/Richardinho/richardUtils.git",
+  "_target": "*",
+  "_originalSource": "richy-utils"
+}

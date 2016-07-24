@@ -1,0 +1,21 @@
+{
+  "name": "white-label-vanilla",
+  "description": "",
+  "main": "main.js",
+  "authors": [
+    "Richard Hunter <richard@richardhunter.co.uk>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Richardinho/white-label",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "selection-box": "*"
+  }
+}
