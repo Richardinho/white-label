@@ -63,6 +63,22 @@ function createFilterByDynasty(model) {
 	}
 }
 
+function createFilterByYearFrom(model) {
+
+	return function (event) {
+		model.setYearFrom(event.target.value);
+		router.navigate(createPath(model));
+	}
+}
+
+function createFilterByYearTo(model) {
+
+	return function (event) {
+		model.setYearTo(event.target.value);
+		router.navigate(createPath(model));
+	}
+}
+
 function createPath(model) {
 	return '' + model.getQueryString();
 }
@@ -73,7 +89,9 @@ function renderAside(el, model) {
 
 	delegate(el, {
 		'change #simple-styling' : createHandleSortByToggle(model),
-		'change #dynasties' : createFilterByDynasty(model)
+		'change #dynasties' : createFilterByDynasty(model),
+		'change #year-from' : createFilterByYearFrom(model),
+		'change #year-to' : createFilterByYearTo(model)
 	});
 }
 
@@ -116,6 +134,12 @@ function createModel(json, queryString) {
 		setSortBy : function (sortBy) {
 			queryParams['sort-by'] = sortBy;
 		},
+		setYearFrom : function (yearFrom) {
+			queryParams['year-from'] = yearFrom;
+		},
+		setYearTo : function (yearTo) {
+			queryParams['year-to'] = yearTo;
+		},
 		setFilterByDynasty : function (dynasty) {
 			queryParams['dynasty'] = dynasty;
 		},
@@ -123,7 +147,11 @@ function createModel(json, queryString) {
 			//  get refinements from query string
 			return {
 				sortBy : queryParams['sort-by'] ? queryParams['sort-by'] : 'reign-asc',
-				dynasty : queryParams['dynasty'] ? queryParams['dynasty'] : 'Flavian'
+				dynasty : queryParams['dynasty'] ? queryParams['dynasty'] : 'Flavian',
+				minYear : -50,
+				maxYear : 400,
+				yearFrom : queryParams['year-from'] ? queryParams['year-from'] : 0,
+				yearTo : queryParams['year-to'] ? queryParams['year-to'] : 200,
 			};
 		},
 		getResults : function () {

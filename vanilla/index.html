@@ -41,17 +41,28 @@
 				<h3>Time range</h3>
 				<li class="range-filters">
 					<label for="year-from">from</label>
-					<input id="year-from" type="range" step="1" min="-50" max="400">
-					<label for="year-from">234AD</label>
+					<input id="year-from"
+								 type="range"
+								 step="1"
+								 min="<% this.minYear %>"
+								 value='<% this.yearFrom %>'
+								 max="<% this.maxYear %>">
+					<label for="year-from"><% this.yearFrom %></label>
 				</li>
 				<li class="range-filters">
 					<label for="year-to">to</label>
-					<input id="year-to" type="range" step="1" min="-50" max="400">
-					<label for="year-to">234AD</label>
+					<input id="year-to"
+								 type="range"
+								 step="1"
+								 min="<% this.minYear %>"
+								 value='<% this.yearTo %>'
+								 max="<% this.maxYear %>">
+					<label for="year-to"><% this.yearTo %></label>
 				</li>
 			</ul>
 			<h4 for='dynasties'>Dynasty</h4>
 			<select id='dynasties'>
+				<option <% if(this.dynasty=='all') { %> selected <% } %>>all</option>
 				<option <% if(this.dynasty=='Julio-Claudian') { %> selected <% } %>>Julio-Claudian</option>
 				<option <% if(this.dynasty=='Flavian') { %> selected <% } %>>Flavian</option>
 				<option <% if(this.dynasty=='Nerva-Antonine') { %> selected <% } %> value='Nerva-Antonine'>Nerva–Antonine</option>

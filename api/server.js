@@ -43,9 +43,26 @@
 			}
 			var json = JSON.parse(data);
 
-			res.json(sortBy(filterBy(json, getFilterOption(req)), getSortOption(req)));
+			var dynastyFilterOption = getDynastyFilterOption(req);
+			var yearFrom = getYearFrom(req);
+			var yearTo = getYearTo(req);
+			var sortOption = getSortOption(req);
+
+			var filtered = filterBy(json, dynastyFilterOption, yearFrom, yearTo);
+
+			res.json(sortBy(filtered, sortOption));
 		});
 	 });
+
+	function getYearFrom(request) {
+		var yearFrom = request.param('year-from');
+		return yearFrom ? yearFrom : -50;
+	}
+
+	function getYearTo(request) {
+		var yearTo = request.param('year-to');
+		return yearTo ? yearTo : 400;
+	}
 
 	function getSortOption (request) {
 		var sortBy = request.param('sort-by');
@@ -53,14 +70,20 @@
 			sortBy : 'succession';
 	}
 
-	function getFilterOption(request) {
+	function getDynastyFilterOption(request) {
 		var filterBy = request.param('dynasty');
-		return filterBy ? filterBy : 'Flavian'; // default for the moment
+		return filterBy ? filterBy : 'all'; // default for the moment
 	}
 
-	function filterBy(data, filterOption) {
+	function filterBy(data, dynasty, from, to) {
+
+		data = data.filter(function(emperor){
+			return emperor.to > from && emperor.from < to;
+		});
+
 		return data.filter(function(emperor) {
-			return emperor.dynasty == filterOption;
+			if(!dynasty || dynasty == 'all') return true;
+			return emperor.dynasty == dynasty;
 		});
 	}
 
