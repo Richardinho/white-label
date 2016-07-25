@@ -50,6 +50,14 @@
 					<label for="year-to">234AD</label>
 				</li>
 			</ul>
+			<h4 for='dynasties'>Dynasty</h4>
+			<select id='dynasties'>
+				<option <% if(this.dynasty=='Julio-Claudian') { %> selected <% } %>>Julio-Claudian</option>
+				<option <% if(this.dynasty=='Flavian') { %> selected <% } %>>Flavian</option>
+				<option <% if(this.dynasty=='Nerva-Antonine') { %> selected <% } %> value='Nerva-Antonine'>Nerva–Antonine</option>
+				<option <% if(this.dynasty=='Severan') { %> selected <% } %>>Severan</option>
+				<option <% if(this.dynasty=='Gordian') { %> selected <% } %>>Gordian</option>
+			</select>
 			<h3>Sort by</h3>
 			<select id='simple-styling'>
 				<option value='reign-asc' <% if(this.sortBy=='reign-asc') { %> selected <% } %>>reign shortest first</option>

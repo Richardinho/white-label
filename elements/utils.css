@@ -51,7 +51,7 @@ body {
 	margin-left: 10px;
 }
 
-h2, h3 {
+h2, h3, h4 {
 	font-weight : normal;
 	line-height : 1;
 	margin : 0;
@@ -71,30 +71,35 @@ h3 a {
 	text-decoration : none;
 }
 
+h4 {
+	padding : .4em 0;
+	font-size : 1em;
+}
 
-#simple-styling-selection-box.selection-box {
+
+.selection-box {
 	position: relative;
 }
 
-#simple-styling-selection-box.selection-box .display-area {
+.selection-box .display-area {
 	border: solid 2px black;
 	padding : 12px;
 }
 
-#simple-styling-selection-box.selection-box .option:focus {
+.selection-box .option:focus {
 	outline : none;
 	background : grey;
 }
 
-#simple-styling-selection-box.selection-box .option {
+.selection-box .option {
 	padding : 12px;
 }
 
-#simple-styling-selection-box.selection-box .option-list {
+.selection-box .option-list {
 	background : white;
 }
 
-#simple-styling-selection-box.selection-box .__selected {
+.selection-box .__selected {
 	font-weight : bold;
 	color : white;
 	background : black;

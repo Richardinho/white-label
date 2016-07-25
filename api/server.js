@@ -41,7 +41,9 @@
 				console.error(err);
 				process.exit(1);
 			}
-			res.json(sortBy(JSON.parse(data), getSortOption(req)));
+			var json = JSON.parse(data);
+
+			res.json(sortBy(filterBy(json, getFilterOption(req)), getSortOption(req)));
 		});
 	 });
 
@@ -49,6 +51,17 @@
 		var sortBy = request.param('sort-by');
 		return sortBy ?
 			sortBy : 'succession';
+	}
+
+	function getFilterOption(request) {
+		var filterBy = request.param('dynasty');
+		return filterBy ? filterBy : 'Flavian'; // default for the moment
+	}
+
+	function filterBy(data, filterOption) {
+		return data.filter(function(emperor) {
+			return emperor.dynasty == filterOption;
+		});
 	}
 
 	function sortBy(data, sortOption) {

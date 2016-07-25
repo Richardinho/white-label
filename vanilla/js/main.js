@@ -33,7 +33,7 @@ function homeController (app) {
 			});
 			var asideEl = document.createElement('div');
 			asideEl.className = 'aside';
-			renderAside(asideEl, model.getRefinements());
+			renderAside(asideEl, model);
 			var mainEl = document.createElement('div');
 			mainEl.className = 'content';
 			addSection(el, 'banner-template', {});
@@ -43,22 +43,37 @@ function homeController (app) {
 			addSection(el, 'footer-template', {});
 			app.appendChild(el);
 
-			var simple = new SelectionBox('#simple-styling');
+			new SelectionBox('#simple-styling');
+			new SelectionBox('#dynasties');
 
 		});
 	}
 }
-
-function handleSortByToggle(event) {
-	router.navigate('?sort-by=' + event.target.value);
+function createHandleSortByToggle(model) {
+	return function handleSortByToggle(event) {
+		model.setSortBy(event.target.value);
+		router.navigate(createPath(model));
+	}
+}
+function createFilterByDynasty(model) {
+	return function filterByDynasty(event) {
+		console.log('filter by dynastry');
+		model.setFilterByDynasty(event.target.value);
+		router.navigate(createPath(model));
+	}
 }
 
-function renderAside(el, refinements) {
+function createPath(model) {
+	return '' + model.getQueryString();
+}
+
+function renderAside(el, model) {
 	var asideTemplate = getTemplate('aside-template');
-	html(el, TemplateEngine(asideTemplate, refinements));
+	html(el, TemplateEngine(asideTemplate, model.getRefinements()));
 
 	delegate(el, {
-		'change #simple-styling' : handleSortByToggle
+		'change #simple-styling' : createHandleSortByToggle(model),
+		'change #dynasties' : createFilterByDynasty(model)
 	});
 }
 
@@ -93,19 +108,33 @@ function getQueryParams(queryString) {
 }
 
 function createModel(json, queryString) {
-	var queryParams;
+	var queryParams= {};
 	if(queryString) {
 		queryParams = getQueryParams(queryString);
 	}
 	return {
+		setSortBy : function (sortBy) {
+			queryParams['sort-by'] = sortBy;
+		},
+		setFilterByDynasty : function (dynasty) {
+			queryParams['dynasty'] = dynasty;
+		},
 		getRefinements : function () {
 			//  get refinements from query string
 			return {
-				sortBy : queryParams && queryParams['sort-by'] ? queryParams['sort-by'] : 'reign-asc'
+				sortBy : queryParams['sort-by'] ? queryParams['sort-by'] : 'reign-asc',
+				dynasty : queryParams['dynasty'] ? queryParams['dynasty'] : 'Flavian'
 			};
 		},
 		getResults : function () {
 			return json;
+		},
+
+		getQueryString : function () {
+			return Object.keys(queryParams).reduce(function (memo, key, index) {
+				var amper = (index > 0) ? '&' : '';
+				return memo + amper + key + '=' + queryParams[key];
+			}, '?');
 		},
 		getPagination : function () {}
 	};

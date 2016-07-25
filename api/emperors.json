@@ -3,27 +3,32 @@
     "id": 1,
     "name": "Augustus",
     "from": -27,
-    "to" : 14
+    "to" : 14,
+    "dynasty" : "Julio-Claudian"
   }, {
     "id": 2,
     "name": "Tiberius",
     "from": 14,
-    "to" : 37
+    "to" : 37,
+    "dynasty" : "Julio-Claudian"
   }, {
     "id": 3,
     "name": "Caligula",
     "from": 37,
-    "to" : 41
+    "to" : 41,
+    "dynasty" : "Julio-Claudian"
   }, {
     "id": 4,
     "name": "Claudius",
     "from": 41,
-    "to" : 54
+    "to" : 54,
+    "dynasty" : "Julio-Claudian"
   }, {
     "id": 5,
     "name": "Nero",
     "from": 54,
-    "to" : 68
+    "to" : 68,
+    "dynasty" : "Julio-Claudian"
   }, {
     "id": 6,
     "name": "Galba",
@@ -43,47 +48,56 @@
     "id": 9,
     "name": "Vespasian",
     "from": 69,
-    "to": 79
+    "to": 79,
+    "dynasty" : "Flavian"
   }, {
     "id": 10,
     "name": "Titus",
     "from": 79,
-    "to": 81
+    "to": 81,
+    "dynasty" : "Flavian"
   }, {
     "id": 11,
     "name": "Domitian",
     "from": 81,
-    "to": 96
+    "to": 96,
+    "dynasty" : "Flavian"
   }, {
     "id": 12,
-    "name": "Nerva",
+    "name": "Nerva-Antonine",
     "from": 96,
-    "to": 98
+    "to": 98,
+    "dynasty" : "Nerva-Antonine"
   }, {
     "id": 13,
     "name": "Trajan",
     "from": 98,
-    "to": 117
+    "to": 117,
+    "dynasty" : "Nerva-Antonine"
   },{
     "id": 14,
     "name": "Hadrian",
     "from": 117,
-    "to": 138
+    "to": 138,
+    "dynasty" : "Nerva-Antonine"
   },{
     "id": 15,
     "name": "Antoninus Pius",
     "from": 138,
-    "to": 161
+    "to": 161,
+    "dynasty" : "Nerva-Antonine"
   },{
     "id": 16,
     "name": "Marcus Aurelius",
     "from": 161,
-    "to": 180
+    "to": 180,
+    "dynasty" : "Nerva-Antonine"
   },{
     "id": 17,
     "name": "Commodus",
     "from": 180,
-    "to": 192
+    "to": 192,
+    "dynasty" : "Nerva-Antonine"
   },
   {
     "id": 18,
@@ -118,7 +132,8 @@
     "id": 23,
     "name": "Lucius Verus",
     "from": 161,
-    "to" : 169
+    "to" : 169,
+    "dynasty" : "Nerva-Antonine"
   }
   ,
   {
