@@ -152,6 +152,36 @@
     "name": "Severus Alexander",
     "from": 222,
     "to" : 235
+  },{
+    "id": 27,
+    "name" : "Maximinus Thrax",
+    "from" : 235,
+    "to" : 238
+  },{
+    "id": 28,
+    "name" : "Pupienus",
+    "from" : 238,
+    "to" : 238
+  },{
+    "id": 29,
+    "name" : "Balbinus",
+    "from" : 238,
+    "to" : 238
+  },{
+    "id": 30,
+    "name" : "Gordian I",
+    "from" : 238,
+    "to" : 238
+  },{
+    "id": 31,
+    "name" : "Gordian II",
+    "from" : 238,
+    "to" : 238
+  },{
+    "id": 32,
+    "name" : "Gordian III",
+    "from" : 238,
+    "to" : 244
   }
 
 ]
