@@ -5,8 +5,8 @@ var router = new Router({
 });
 
 function html(el, htmlString) {
-	//todo should also handle case where string represents more than single root element
-	// iterate through children and append each to node.
+	//  todo should also handle case where string represents more than single root element
+	//  iterate through children and append each to node.
 	var tempEl = document.createElement('div');
 	tempEl.innerHTML = htmlString;
 	el.appendChild(tempEl.firstElementChild);
@@ -57,14 +57,12 @@ function createHandleSortByToggle(model) {
 }
 function createFilterByDynasty(model) {
 	return function filterByDynasty(event) {
-		console.log('filter by dynastry');
 		model.setFilterByDynasty(event.target.value);
 		router.navigate(createPath(model));
 	}
 }
 
 function createFilterByYearFrom(model) {
-
 	return function (event) {
 		model.setYearFrom(event.target.value);
 		router.navigate(createPath(model));
@@ -72,7 +70,6 @@ function createFilterByYearFrom(model) {
 }
 
 function createFilterByYearTo(model) {
-
 	return function (event) {
 		model.setYearTo(event.target.value);
 		router.navigate(createPath(model));
@@ -106,7 +103,6 @@ function renderResults(el, results) {
 }
 
 function getData(queryString) {
-
 	return fetch('http://localhost:3000/api/emperors' + '?' + queryString).then(function (response) {
 		return response.json().then(function(json) {
 			return createModel(json, queryString);
@@ -119,8 +115,10 @@ function getQueryParams(queryString) {
 	var queryParams = {};
 
 	queryString.replace(
-	    new RegExp("([^?=&]+)(=([^&]*))?", "g"),
-	    function($0, $1, $2, $3) { queryParams[$1] = $3; }
+		new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+		function($0, $1, $2, $3) {
+			queryParams[$1] = $3;
+		}
 	);
 	return queryParams;
 }
@@ -131,31 +129,32 @@ function createModel(json, queryString) {
 		queryParams = getQueryParams(queryString);
 	}
 	return {
+
 		setSortBy : function (sortBy) {
 			queryParams['sort-by'] = sortBy;
 		},
+
 		setYearFrom : function (yearFrom) {
 			queryParams['year-from'] = yearFrom;
 		},
+
 		setYearTo : function (yearTo) {
 			queryParams['year-to'] = yearTo;
 		},
+
 		setFilterByDynasty : function (dynasty) {
 			queryParams['dynasty'] = dynasty;
 		},
+
 		getRefinements : function () {
 			//  get refinements from query string
-			return {
-				sortBy : queryParams['sort-by'] ? queryParams['sort-by'] : 'reign-asc',
-				dynasty : queryParams['dynasty'] ? queryParams['dynasty'] : 'Flavian',
-				minYear : -50,
-				maxYear : 400,
-				yearFrom : queryParams['year-from'] ? queryParams['year-from'] : 0,
-				yearTo : queryParams['year-to'] ? queryParams['year-to'] : 200,
-			};
+			//  Need to only return properties for existing params
+			//  let server handle default results
+			return json.criteria;
 		},
+
 		getResults : function () {
-			return json;
+			return json.results;
 		},
 
 		getQueryString : function () {
@@ -164,7 +163,9 @@ function createModel(json, queryString) {
 				return memo + amper + key + '=' + queryParams[key];
 			}, '?');
 		},
+
 		getPagination : function () {}
+
 	};
 }
 

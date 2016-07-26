@@ -16,6 +16,13 @@
 	 var bodyParser = require('body-parser');
 	 var app = express();
 
+	 var defaultParams = {
+			'year-from' : 50,
+			'year-to'   : 300,
+			'dynasty'   : 'Flavian',
+			'sort-by'   : 'succession'
+	 };
+
 	 var EMPERORS_FILE = path.join(__dirname, 'emperors.json');
 
 	 app.set('port', (process.env.PORT || 3000));
@@ -34,7 +41,7 @@
 			res.setHeader('Cache-Control', 'no-cache');
 			next();
 	 });
-	 
+
 	 app.get('/api/emperors', function(req, res) {
 		fs.readFile(EMPERORS_FILE, function(err, data) {
 			if (err) {
@@ -50,18 +57,28 @@
 
 			var filtered = filterBy(json, dynastyFilterOption, yearFrom, yearTo);
 
-			res.json(sortBy(filtered, sortOption));
+			res.json({
+				results : sortBy(filtered, sortOption),
+				criteria : {
+					'dynasty' : dynastyFilterOption,
+					'yearFrom' : yearFrom,
+					'yearTo' : yearTo,
+					'sortBy' : sortOption,
+					minYear : -50,
+					maxYear : 400
+				}
+			});
 		});
 	 });
 
 	function getYearFrom(request) {
 		var yearFrom = request.param('year-from');
-		return yearFrom ? yearFrom : -50;
+		return yearFrom ? yearFrom : defaultParams['year-from'];
 	}
 
 	function getYearTo(request) {
 		var yearTo = request.param('year-to');
-		return yearTo ? yearTo : 400;
+		return yearTo ? yearTo : defaultParams['year-to'];
 	}
 
 	function getSortOption (request) {
@@ -71,8 +88,8 @@
 	}
 
 	function getDynastyFilterOption(request) {
-		var filterBy = request.param('dynasty');
-		return filterBy ? filterBy : 'all'; // default for the moment
+		var dynasty = request.param('dynasty');
+		return dynasty ? dynasty : defaultParams['dynasty']; // default for the moment
 	}
 
 	function filterBy(data, dynasty, from, to) {
@@ -82,7 +99,7 @@
 		});
 
 		return data.filter(function(emperor) {
-			if(!dynasty || dynasty == 'all') return true;
+			if(dynasty == 'all') return true;
 			return emperor.dynasty == dynasty;
 		});
 	}
@@ -96,7 +113,7 @@
 			return data.sort(function (a,b) {
 				return getReign(b) - getReign(a);
 			});
-		} else {
+		} else { //  succession
 			return data.sort(function (a,b) {
 				return a.from - b.from;
 			});
