@@ -182,6 +182,25 @@
     "name" : "Gordian III",
     "from" : 238,
     "to" : 244
+  },{
+    "id": 33,
+    "name" : "Philip the Arab",
+    "from" : 244,
+    "to" : 249
+  },{
+    "id": 34,
+    "name" : "Decius",
+    "from" : 249,
+    "to" : 251
+  },{
+    "id" : 35,
+    "name" : "Herennius Etruscus",
+    "from" : 251,
+    "to" : 251
+  },{
+    "id" : 36,
+    "name" : "Trebonianus Gallus",
+    "from" : 251,
+    "to" : 253
   }
-
 ]
