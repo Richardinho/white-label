@@ -1,47 +1,54 @@
 var app = document.getElementById('app');
 
 var router = new Router({
-	'' : homeController(app)
+	'' : homeController(app),
+	'emperor' : emperorController(app)
 });
 
-function html(el, htmlString) {
-	//  todo should also handle case where string represents more than single root element
-	//  iterate through children and append each to node.
-	var tempEl = document.createElement('div');
-	tempEl.innerHTML = htmlString;
-	el.appendChild(tempEl.firstElementChild);
+function emperorController(appEl) {
+	return function handleRequest(queryString) {
+		getEmperorData(queryString).then(function(model){
+			appEl.innerHTML = '';
+			var el = document.createElement('div');
+			delegate(el, {
+				'click [data-internal-link]' : handleInternalLink
+			});
+			el.className = 'container';
+			addSection(el, 'banner-template', {});
+			addSection(el, 'emperor-template', model.getEmperor());
+			appEl.appendChild(el);
+		});
+	};
 }
 
-function getTemplate(id) {
-	return document.getElementById(id).textContent;
-}
-
-function addSection(el, templateId, data) {
-	var bannerTemplate = getTemplate(templateId);
-	html(el, TemplateEngine(bannerTemplate, data));
-}
-
-function homeController (app) {
+function homeController (appEl) {
 	return function handleRequest(queryString) {
 
 		getData(queryString).then(function (model) {
 			var el = document.createElement('div');
 			el.className = 'container';
-			app.innerHTML = '';
+			appEl.innerHTML = '';
 			delegate(el, {
 				'click [data-internal-link]' : handleInternalLink
 			});
+
 			var asideEl = document.createElement('div');
 			asideEl.className = 'aside';
 			renderAside(asideEl, model);
+
 			var mainEl = document.createElement('div');
 			mainEl.className = 'content';
+
 			addSection(el, 'banner-template', {});
+
 			renderResults(mainEl, model.getResults());
+
 			el.appendChild(asideEl);
 			el.appendChild(mainEl);
+
 			addSection(el, 'footer-template', {});
-			app.appendChild(el);
+
+			appEl.appendChild(el);
 
 			new SelectionBox('#simple-styling');
 			new SelectionBox('#dynasties');
@@ -49,6 +56,29 @@ function homeController (app) {
 		});
 	}
 }
+
+function renderAside(el, model) {
+	var asideTemplate = getTemplate('aside-template');
+	html(el, TemplateEngine(asideTemplate, model.getRefinements()));
+
+	delegate(el, {
+		'change #simple-styling' : createHandleSortByToggle(model),
+		'change #dynasties' : createFilterByDynasty(model),
+		'change #year-from' : createFilterByYearFrom(model),
+		'change #year-to' : createFilterByYearTo(model)
+	});
+}
+
+function renderResults(el, results) {
+	var resultTemplate = getTemplate('result-template');
+	var frag = document.createDocumentFragment();
+	frag = results.reduce(function (frag, resultData) {
+		html(frag, TemplateEngine(resultTemplate, resultData));
+		return frag;
+	}, frag);
+	el.appendChild(frag);
+}
+
 function createHandleSortByToggle(model) {
 	return function handleSortByToggle(event) {
 		model.setSortBy(event.target.value);
@@ -80,32 +110,18 @@ function createPath(model) {
 	return '' + model.getQueryString();
 }
 
-function renderAside(el, model) {
-	var asideTemplate = getTemplate('aside-template');
-	html(el, TemplateEngine(asideTemplate, model.getRefinements()));
-
-	delegate(el, {
-		'change #simple-styling' : createHandleSortByToggle(model),
-		'change #dynasties' : createFilterByDynasty(model),
-		'change #year-from' : createFilterByYearFrom(model),
-		'change #year-to' : createFilterByYearTo(model)
-	});
-}
-
-function renderResults(el, results) {
-	var resultTemplate = getTemplate('result-template');
-	var frag = document.createDocumentFragment();
-	frag = results.reduce(function (frag, resultData) {
-		html(frag, TemplateEngine(resultTemplate, resultData));
-		return frag;
-	}, frag);
-	el.appendChild(frag);
-}
-
 function getData(queryString) {
 	return fetch('http://localhost:3000/api/emperors' + '?' + queryString).then(function (response) {
 		return response.json().then(function(json) {
 			return createModel(json, queryString);
+		});
+	});
+}
+
+function getEmperorData(queryString) {
+	return fetch('http://localhost:3000/api/emperor' + '?' + queryString).then(function (response) {
+		return response.text().then(function (text) {
+			return createEmperorModel(text);
 		});
 	});
 }
@@ -121,6 +137,16 @@ function getQueryParams(queryString) {
 		}
 	);
 	return queryParams;
+}
+
+function createEmperorModel(text) {
+	return {
+		getEmperor : function () {
+			return {
+				text : text
+			}
+		}
+	};
 }
 
 function createModel(json, queryString) {
@@ -173,6 +199,23 @@ function handleInternalLink(event) {
 	event.preventDefault();
 	var href = event.target.getAttribute('href');
 	router.navigate(href);
+}
+
+function html(el, htmlString) {
+	//  todo should also handle case where string represents more than single root element
+	//  iterate through children and append each to node.
+	var tempEl = document.createElement('div');
+	tempEl.innerHTML = htmlString;
+	el.appendChild(tempEl.firstElementChild);
+}
+
+function getTemplate(id) {
+	return document.getElementById(id).textContent;
+}
+
+function addSection(el, templateId, data) {
+	var bannerTemplate = getTemplate(templateId);
+	html(el, TemplateEngine(bannerTemplate, data));
 }
 
 router.start();

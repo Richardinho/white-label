@@ -27,7 +27,7 @@
 				<img alt="" src="http://localhost:4000/images/medium/<% this.id %>.jpg">
 			</a>
 			<div class="media-body">
-				<h3><a href=""><% this.name %></a></h3>
+				<h3><a data-internal-link href="/emperor?id=<% this.id %>"><% this.name %></a></h3>
 				<div class="add-info"><% this.from %> <% this.to %>
 				</div>
 			</div>
@@ -89,6 +89,12 @@
 					White Label
 				</a>
 			</h1>
+		</div>
+	</script>
+
+	<script type='text/html' id='emperor-template'>
+		<div class='emperor'>
+			<p><% this.text %></p>
 		</div>
 	</script>
 
