@@ -42,7 +42,17 @@
 			next();
 	 });
 
-	 app.get('/api/emperors', function(req, res) {
+	app.get('/api/emperor', function(req, res) {
+		setTimeout(function () {
+			res.sendFile(createEmperorFileName(req.param('id')));
+		}, 1000); //  choking response time
+	});
+
+	function createEmperorFileName (id) {
+		return path.join(__dirname, 'emperors/' + id + '.html');
+	}
+
+	app.get('/api/emperors', function(req, res) {
 		fs.readFile(EMPERORS_FILE, function(err, data) {
 			if (err) {
 				console.error(err);
@@ -57,17 +67,19 @@
 
 			var filtered = filterBy(json, dynastyFilterOption, yearFrom, yearTo);
 
-			res.json({
-				results : sortBy(filtered, sortOption),
-				criteria : {
-					'dynasty' : dynastyFilterOption,
-					'yearFrom' : yearFrom,
-					'yearTo' : yearTo,
-					'sortBy' : sortOption,
-					minYear : -50,
-					maxYear : 400
-				}
-			});
+			setTimeout(function () {
+				res.json({
+					results : sortBy(filtered, sortOption),
+					criteria : {
+						'dynasty' : dynastyFilterOption,
+						'yearFrom' : yearFrom,
+						'yearTo' : yearTo,
+						'sortBy' : sortOption,
+						minYear : -50,
+						maxYear : 400
+					}
+				});
+			}, 1000); //  choking response time
 		});
 	 });
 

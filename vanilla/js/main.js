@@ -7,6 +7,7 @@ var router = new Router({
 
 function emperorController(appEl) {
 	return function handleRequest(queryString) {
+		addLoadingPanel();
 		getEmperorData(queryString).then(function(model){
 			appEl.innerHTML = '';
 			var el = document.createElement('div');
@@ -17,13 +18,14 @@ function emperorController(appEl) {
 			addSection(el, 'banner-template', {});
 			addSection(el, 'emperor-template', model.getEmperor());
 			appEl.appendChild(el);
+			removeLoadingPanel();
 		});
 	};
 }
 
 function homeController (appEl) {
 	return function handleRequest(queryString) {
-
+		addLoadingPanel();
 		getData(queryString).then(function (model) {
 			var el = document.createElement('div');
 			el.className = 'container';
@@ -52,6 +54,7 @@ function homeController (appEl) {
 
 			new SelectionBox('#simple-styling');
 			new SelectionBox('#dynasties');
+			removeLoadingPanel();
 
 		});
 	}
@@ -72,6 +75,9 @@ function renderAside(el, model) {
 function renderResults(el, results) {
 	var resultTemplate = getTemplate('result-template');
 	var frag = document.createDocumentFragment();
+	var loadingPanel = document.createElement('div');
+	loadingPanel.className = 'loading-panel';
+	frag.appendChild(loadingPanel)
 	frag = results.reduce(function (frag, resultData) {
 		html(frag, TemplateEngine(resultTemplate, resultData));
 		return frag;
@@ -108,6 +114,15 @@ function createFilterByYearTo(model) {
 
 function createPath(model) {
 	return '' + model.getQueryString();
+}
+
+//  no need to remove as will be wiped out when page is re-rendered
+function addLoadingPanel() {
+	document.body.classList.add('loading');
+}
+
+function removeLoadingPanel() {
+	document.body.classList.remove('loading');
 }
 
 function getData(queryString) {
