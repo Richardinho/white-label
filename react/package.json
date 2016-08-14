@@ -1,0 +1,16 @@
+{
+  "jspm": {
+    "dependencies": {
+      "fetch": "npm:whatwg-fetch@^1.0.0",
+      "react": "npm:react@^15.3.0",
+      "react-dom": "npm:react-dom@^15.3.0",
+      "react-router": "npm:react-router@^2.6.1",
+      "whatwg-fetch": "npm:whatwg-fetch@^1.0.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
