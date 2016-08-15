@@ -3,6 +3,7 @@
 	border-bottom : solid 2px lightgray;
 	background : white;
 	position : relative;
+	box-sizing : content-box;
 
 }
 
@@ -25,7 +26,7 @@
 	border-bottom : solid 2px lightgrey;
 	content : '';
 	background : inherit;
-	height : calc(100% + 2px);
+	height : 100%;
 	top : 0;
 	position : absolute;
 	width : calc(50vw - 50%);

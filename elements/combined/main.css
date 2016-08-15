@@ -1,20 +1,3 @@
-.container {
-	width : 1000px;
-	margin : auto;
-}
-
-.container .aside {
-	float : left;
-	width : 30%;
-}
-
-.container .content {
-	float : left;
-	width : 70%;
-	border-left : solid 1px transparent;
-	position : relative;
-}
-
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
   from {
@@ -86,10 +69,3 @@ body.loading .loading-panel {
 
 }
 
-.container .results-container li{
-	margin-bottom : 1px;
-}
-
-.container .footer {
-	clear : both;
-}
