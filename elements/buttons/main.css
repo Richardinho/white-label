@@ -1,4 +1,3 @@
-
 .btn {
 	text-decoration : none;
 	text-transform : uppercase;
@@ -10,18 +9,15 @@
 	border-radius : 0.626em;
 	font-size : 1em;
 }
-
 .btn  > svg {
 	width : 1.5em;
 	margin-right : .25em;
 }
-
-.btn  > svg, .btn > span{
+.btn  > svg, .btn > span {
 	display : inline-block;
 	fill : black;
 	vertical-align : middle;
 }
-
 .btn:hover {
 	background : grey;
 }

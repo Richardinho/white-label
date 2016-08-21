@@ -1,0 +1,2 @@
+# Buttons
+All sizes are in ems, from padding to even border radius! The idea here is that buttons of different sizes but with identical proportions can be created by setting a different font size on the base element.

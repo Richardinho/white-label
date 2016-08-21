@@ -525,7 +525,7 @@
 
 
 	// module
-	exports.push([module.id, "h2, h3, h4 {\n  font-weight: normal;\n  line-height: 1;\n  margin: 0; }\n\nh2 {\n  padding: .2em 0;\n  font-size: 1.4em;\n  font-weight: bold; }\n\nh3 {\n  padding: .4em 0;\n  font-size: 1.2em; }\n\nh3 a {\n  text-decoration: none; }\n\nh4 {\n  padding: .4em 0;\n  font-size: 1em; }\n", ""]);
+	exports.push([module.id, ".foobar .blah {\n  border: solid 2px green; }\n\nh2, h3, h4 {\n  font-weight: normal;\n  line-height: 1;\n  margin: 0; }\n\nh2 {\n  padding: .2em 0;\n  font-size: 1.4em;\n  font-weight: bold; }\n\nh3 {\n  padding: .4em 0;\n  font-size: 1.2em; }\n\nh3 a {\n  text-decoration: none; }\n\nh4 {\n  padding: .4em 0;\n  font-size: 1em; }\n", ""]);
 
 	// exports
 
@@ -29106,10 +29106,12 @@
 
 
 	// module
-	exports.push([module.id, ".banner__banner___b1g3v {\n  font-size: 20px;\n  border-bottom: solid 2px #9999ff;\n  background: #f5f5ff;\n  position: relative;\n  box-sizing: content-box; }\n  .banner__banner___b1g3v:before, .banner__banner___b1g3v:after {\n    border-bottom: solid 2px #9999ff;\n    content: '';\n    background: inherit;\n    height: 100%;\n    top: 0;\n    position: absolute;\n    width: calc(50vw - 50%); }\n  .banner__banner___b1g3v:before {\n    right: 100%; }\n  .banner__banner___b1g3v:after {\n    left: 100%; }\n  .banner__banner___b1g3v h1 {\n    margin: 0;\n    line-height: 1;\n    font-size: 2em;\n    color: #000085;\n    padding: .5em 0;\n    text-align: right; }\n    .banner__banner___b1g3v h1 a {\n      text-decoration: none;\n      color: inherit; }\n", ""]);
+	exports.push([module.id, ".banner__foobar___2aV5a .banner__blah___EtLT- {\n  border: solid 2px green; }\n\n.banner__banner___b1g3v {\n  font-size: 20px;\n  border-bottom: solid 2px #9999ff;\n  background: #f5f5ff;\n  position: relative;\n  box-sizing: content-box; }\n  .banner__banner___b1g3v:before, .banner__banner___b1g3v:after {\n    border-bottom: solid 2px #9999ff;\n    content: '';\n    background: inherit;\n    height: 100%;\n    top: 0;\n    position: absolute;\n    width: calc(50vw - 50%); }\n  .banner__banner___b1g3v:before {\n    right: 100%; }\n  .banner__banner___b1g3v:after {\n    left: 100%; }\n  .banner__banner___b1g3v h1 {\n    margin: 0;\n    line-height: 1;\n    font-size: 2em;\n    color: #000085;\n    padding: .5em 0;\n    text-align: right; }\n    .banner__banner___b1g3v h1 a {\n      text-decoration: none;\n      color: inherit; }\n", ""]);
 
 	// exports
 	exports.locals = {
+		"foobar": "banner__foobar___2aV5a",
+		"blah": "banner__blah___EtLT-",
 		"banner": "banner__banner___b1g3v"
 	};
 
@@ -29148,10 +29150,12 @@
 
 
 	// module
-	exports.push([module.id, ".layout__container___3nUnC {\n  width: 1000px;\n  margin: auto;\n  background: #f5f5ff; }\n\n.layout__container___3nUnC .layout__results-container___dEraJ li {\n  margin-bottom: 1px; }\n\n.layout__container___3nUnC .layout__footer___3s0pb {\n  clear: both; }\n\n.layout__aside___1RSAL {\n  float: left;\n  width: 30%; }\n\n.layout__content___3B_4i {\n  float: left;\n  width: 70%;\n  border-left: solid 1px transparent;\n  position: relative; }\n", ""]);
+	exports.push([module.id, ".layout__foobar___e-w79 .layout__blah___2Y0lB {\n  border: solid 2px green; }\n\n.layout__container___3nUnC {\n  width: 1000px;\n  margin: auto;\n  background: #f5f5ff; }\n\n.layout__container___3nUnC .layout__results-container___dEraJ li {\n  margin-bottom: 1px; }\n\n.layout__container___3nUnC .layout__footer___3s0pb {\n  clear: both; }\n\n.layout__aside___1RSAL {\n  float: left;\n  width: 30%; }\n\n.layout__content___3B_4i {\n  float: left;\n  width: 70%;\n  border-left: solid 1px transparent;\n  position: relative; }\n", ""]);
 
 	// exports
 	exports.locals = {
+		"foobar": "layout__foobar___e-w79",
+		"blah": "layout__blah___2Y0lB",
 		"container": "layout__container___3nUnC",
 		"results-container": "layout__results-container___dEraJ",
 		"footer": "layout__footer___3s0pb",
@@ -29738,10 +29742,12 @@
 
 
 	// module
-	exports.push([module.id, "ul, li {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\n.filters__menu___2OWVf {\n  font-size: 16px;\n  padding: 1.2em;\n  font-family: ubuntu;\n  background: #e6e6ff; }\n\n.filters__styled-radio-block___wi6Yg {\n  display: inline-block;\n  padding: .4em 0; }\n\n.filters__styled-radio-block___wi6Yg > input,\n.filters__styled-radio-block___wi6Yg > label {\n  vertical-align: middle; }\n\n.filters__styled-radio-block___wi6Yg .filters__styled-radio___I8Lzj {\n  background: white;\n  width: 1.2em;\n  height: 1.2em;\n  display: inline-block;\n  border: solid .1em grey;\n  border-radius: .1em;\n  position: relative; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio] {\n  display: none; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio]:checked ~ label.filters__styled-radio___I8Lzj:before {\n  content: 'x';\n  width: 100%;\n  height: 100%;\n  display: inline-block;\n  text-align: center; }\n\n.filters__rangeFilters___3eLoy {\n  padding: .4em  0; }\n\n.filters__rangeFilters___3eLoy > label,\n.filters__rangeFilters___3eLoy > input {\n  display: inline-block;\n  vertical-align: middle; }\n", ""]);
+	exports.push([module.id, ".filters__foobar___wkd1S .filters__blah___uXVkv {\n  border: solid 2px green; }\n\nul, li {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\n.filters__menu___2OWVf {\n  font-size: 16px;\n  padding: 1.2em;\n  font-family: ubuntu;\n  background: #e6e6ff; }\n\n.filters__styled-radio-block___wi6Yg {\n  display: inline-block;\n  padding: .4em 0; }\n\n.filters__styled-radio-block___wi6Yg > input,\n.filters__styled-radio-block___wi6Yg > label {\n  vertical-align: middle; }\n\n.filters__styled-radio-block___wi6Yg .filters__styled-radio___I8Lzj {\n  background: white;\n  width: 1.2em;\n  height: 1.2em;\n  display: inline-block;\n  border: solid .1em grey;\n  border-radius: .1em;\n  position: relative; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio] {\n  display: none; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio]:checked ~ label.filters__styled-radio___I8Lzj:before {\n  content: 'x';\n  width: 100%;\n  height: 100%;\n  display: inline-block;\n  text-align: center; }\n\n.filters__rangeFilters___3eLoy {\n  padding: .4em  0; }\n\n.filters__rangeFilters___3eLoy > label,\n.filters__rangeFilters___3eLoy > input {\n  display: inline-block;\n  vertical-align: middle; }\n", ""]);
 
 	// exports
 	exports.locals = {
+		"foobar": "filters__foobar___wkd1S",
+		"blah": "filters__blah___uXVkv",
 		"menu": "filters__menu___2OWVf",
 		"styled-radio-block": "filters__styled-radio-block___wi6Yg",
 		"styled-radio": "filters__styled-radio___I8Lzj",
@@ -29872,10 +29878,12 @@
 
 
 	// module
-	exports.push([module.id, ".results__searchResultItem___1t5sl {\n  background: #e6e6ff;\n  padding: 2em; }\n\n.results__searchResultItem___1t5sl img {\n  width: 10em; }\n\n.results__addInfo___lNmvq {\n  padding: .4em 0;\n  line-height: 1;\n  color: #666; }\n\n.results__searchResultItem___1t5sl h3 a {\n  color: #333; }\n\n.results__emperor___ZlgY7 h2 {\n  line-height: 2em;\n  font-size: 1.5em; }\n\n.results__emperor___ZlgY7 p {\n  font-family: times;\n  margin-bottom: 2em;\n  line-height: 1.5; }\n", ""]);
+	exports.push([module.id, ".results__foobar___1NKPN .results__blah___AW_HP {\n  border: solid 2px green; }\n\n.results__searchResultItem___1t5sl {\n  background: #e6e6ff;\n  padding: 2em; }\n\n.results__searchResultItem___1t5sl img {\n  width: 10em; }\n\n.results__addInfo___lNmvq {\n  padding: .4em 0;\n  line-height: 1;\n  color: #666; }\n\n.results__searchResultItem___1t5sl h3 a {\n  color: #333; }\n\n.results__emperor___ZlgY7 h2 {\n  line-height: 2em;\n  font-size: 1.5em; }\n\n.results__emperor___ZlgY7 p {\n  font-family: times;\n  margin-bottom: 2em;\n  line-height: 1.5; }\n", ""]);
 
 	// exports
 	exports.locals = {
+		"foobar": "results__foobar___1NKPN",
+		"blah": "results__blah___AW_HP",
 		"searchResultItem": "results__searchResultItem___1t5sl",
 		"addInfo": "results__addInfo___lNmvq",
 		"emperor": "results__emperor___ZlgY7"

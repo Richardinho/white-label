@@ -4,9 +4,7 @@
 	background : white;
 	position : relative;
 	box-sizing : content-box;
-
 }
-
 .banner h1 {
 	margin : 0;
 	line-height : 1;
@@ -14,13 +12,11 @@
 	color : gray;
 	padding : .5em 0;
 	text-align : right;
-
 }
 .banner h1 a {
 	text-decoration : none;
 	color : inherit;
 }
-
 .banner:before,
 .banner:after {
 	border-bottom : solid 2px lightgrey;

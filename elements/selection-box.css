@@ -1,0 +1,22 @@
+.selection-box {
+	position: relative;
+}
+.selection-box .display-area {
+	border: solid 2px black;
+	padding : 12px;
+}
+.selection-box .option:focus {
+	outline : none;
+	background : grey;
+}
+.selection-box .option {
+	padding : 12px;
+}
+.selection-box .option-list {
+	background : white;
+}
+.selection-box .__selected {
+	font-weight : bold;
+	color : white;
+	background : black;
+}

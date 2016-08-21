@@ -2,15 +2,12 @@
 html {
 	box-sizing: border-box;
 }
-
 body {
 	font-family : ubuntu;
 }
-
 *, *:before, *:after {
 	box-sizing: inherit;
 }
-
 /* image replacement */
 .image-replacement{
 	border: 0;
@@ -22,7 +19,6 @@ body {
 	position: absolute;
 	width: 1px;
 }
-
 /* clearfix */
 .clearfix:before,
 .clearfix:after {
@@ -32,7 +28,6 @@ body {
 .clearfix:after {
 	clear: both;
 }
-
 /* media object */
 .media {
 }
@@ -50,19 +45,16 @@ body {
 	float:right;
 	margin-left: 10px;
 }
-
 h2, h3, h4 {
 	font-weight : normal;
 	line-height : 1;
 	margin : 0;
 }
-
 h2 {
 	padding : .2em 0;
 	font-size : 1.4em;
 	font-weight : bold;
 }
-
 h3{
 	padding : .4em 0;
 	font-size : 1.2em;
@@ -70,38 +62,7 @@ h3{
 h3 a {
 	text-decoration : none;
 }
-
 h4 {
 	padding : .4em 0;
 	font-size : 1em;
 }
-
-
-.selection-box {
-	position: relative;
-}
-
-.selection-box .display-area {
-	border: solid 2px black;
-	padding : 12px;
-}
-
-.selection-box .option:focus {
-	outline : none;
-	background : grey;
-}
-
-.selection-box .option {
-	padding : 12px;
-}
-
-.selection-box .option-list {
-	background : white;
-}
-
-.selection-box .__selected {
-	font-weight : bold;
-	color : white;
-	background : black;
-}
-

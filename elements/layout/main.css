@@ -2,20 +2,16 @@
 	width : 1000px;
 	margin : auto;
 }
-
 .container .results-container li{
 	margin-bottom : 1px;
 }
-
 .container .footer {
 	clear : both;
 }
-
 .aside {
 	float : left;
 	width : 30%;
 }
-
 .content {
 	float : left;
 	width : 70%;

@@ -7,7 +7,6 @@
 	display : table;
 	width : 100%;
 }
-
 .pagination ul {
 	display : inline-block;
 	float : left;
@@ -15,7 +14,6 @@
 	padding : 0;
 	margin : 0;
 }
-
 .pagination li {
 	float : left;
 	cursor : pointer;
@@ -26,37 +24,30 @@
 	padding : 0.25em;
 	text-align : center;
 }
-
 .pagination li:first-child{
 	border-top-left-radius : 0.3em;
 	border-bottom-left-radius : 0.3em;
 }
-
 .pagination li:last-child{
 	border-top-right-radius : 0.3em;
 	border-bottom-right-radius : 0.3em;
 }
-
 .pagination li:hover {
 	color : black;
 }
-
 .pagination li:active {
 	position : relative;
 	top : 0.2em;
 }
-
 .pagination li.disabled:active {
 	position : static;
 	top : 0;
 }
-
 .pagination li.disabled {
 	color : lightgray;
 	background-color : white;
 	background-image : none;
 }
-
 .pagination-metadata {
 	float : left;
 	line-height : 1;
