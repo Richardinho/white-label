@@ -1,0 +1,57 @@
+@import './variables';
+
+ul, li {
+	list-style : none;
+	padding : 0;
+	margin : 0;
+}
+
+.menu {
+	font-size : 16px;
+	padding : 1.2em;
+	font-family : ubuntu;
+	background : lighten( $base-color, 45% );
+}
+
+.styled-radio-block{
+	display : inline-block;
+	padding : .4em 0;
+}
+
+.styled-radio-block > input,
+.styled-radio-block > label {
+	vertical-align : middle;
+}
+
+.styled-radio-block .styled-radio {
+	background : white;
+	width : 1.2em;
+	height : 1.2em;
+	display : inline-block;
+	border : solid .1em grey;
+	border-radius : .1em;
+	position : relative;
+}
+
+.styled-radio-block input[type=radio] {
+	display : none;
+}
+
+.styled-radio-block input[type=radio]:checked ~ label.styled-radio:before {
+	content : 'x';
+	width : 100%;
+	height : 100%;
+	display : inline-block;
+	text-align : center;
+}
+
+.rangeFilters {
+	padding : .4em  0;
+}
+.rangeFilters > label,
+.rangeFilters > input {
+	display : inline-block;
+	vertical-align : middle;
+}
+
+

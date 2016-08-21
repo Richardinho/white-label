@@ -1,19 +1,14 @@
-var React = require('react');
-var Banner = require('./banner');
-var styles = require('../../elements/layout/main.css');
+import React from 'react';
+import Banner from './banner';
+import styles from '../styles/layout.scss';
 
-module.exports = React.createClass({
-	render : function () {
+export default class Layout extends React.Component {
+	render () {
 		return (
-			<div className={styles.container}>
+			<div className={ styles.container }>
 				<Banner/>
-				<div className={styles.aside}>
-					aside
-				</div>
-				<div className={styles.content}>
-					content
-				</div>
+				{ this.props.children }
 			</div>
 		);
 	}
-});
+}

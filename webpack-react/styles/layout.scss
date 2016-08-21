@@ -1,0 +1,28 @@
+@import '../styles/variables';
+
+.container {
+	width : 1000px;
+	margin : auto;
+	background : lighten( $base-color, 48% )
+}
+
+.container .results-container li{
+	margin-bottom : 1px;
+}
+
+.container .footer {
+	clear : both;
+}
+
+.aside {
+	float : left;
+	width : 30%;
+}
+
+.content {
+	float : left;
+	width : 70%;
+	border-left : solid 1px transparent;
+	position : relative;
+}
+

@@ -1,0 +1,29 @@
+@import './variables';
+
+.searchResultItem {
+	background : lighten( $base-color, 45% );
+	padding : 2em;
+}
+
+.searchResultItem img {
+	width : 10em;
+}
+
+.addInfo {
+	padding : .4em 0;
+	line-height : 1;
+	color : #666;
+}
+
+.searchResultItem h3 a {
+	color : #333;
+}
+.emperor h2 {
+	line-height : 2em;
+	font-size : 1.5em;
+}
+.emperor p {
+	font-family : times;
+	margin-bottom : 2em;
+	line-height : 1.5;
+}

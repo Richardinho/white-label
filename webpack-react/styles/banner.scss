@@ -1,0 +1,45 @@
+@import './variables';
+
+.banner {
+	font-size : 20px;
+	border-bottom : solid 2px $border-color;
+	background : lighten( $base-color, 48% );
+	position : relative;
+	box-sizing : content-box;
+
+	&:before,
+	&:after {
+		border-bottom : solid 2px $border-color;
+		content : '';
+		background : inherit;
+		height : 100%;
+		top : 0;
+		position : absolute;
+		width : calc(50vw - 50%);
+	}
+	&:before {
+		right : 100%;
+	}
+	&:after {
+		left : 100%;
+	}
+
+	h1 {
+		margin : 0;
+		line-height : 1;
+		font-size : 2em;
+		color : $text-color;
+		padding : .5em 0;
+		text-align : right;
+		a {
+			text-decoration : none;
+			color : inherit;
+		}
+	}
+}
+
+
+
+
+
+

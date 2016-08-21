@@ -1,16 +1,12 @@
-var React = require('react');
-var styles = require('../../elements/banner/main.css');
+import React  from 'react';
+import { banner } from '../styles/banner.scss';
 
-var Banner = React.createClass({
-	render : function() {
-		return (
-			<div className={styles.banner}>
-				<h1>
-					<a>White Label</a>
-				</h1>
-			</div>
-		);
-	}
-});
-
-module.exports = Banner;
+export default (props) => {
+	return (
+		<div className={ banner }>
+			<h1>
+				<a>Whitey Label</a>
+			</h1>
+		</div>
+	);
+};
