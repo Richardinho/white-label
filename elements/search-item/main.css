@@ -1,19 +1,19 @@
-.search-result-item {
+.searchResultItem {
 	background : #eee;
 	padding : 2em;
 }
 
-.search-result-item img {
+.searchResultItem img {
 	width : 10em;
 }
 
-.search-result-item .add-info {
+.addInfo {
 	padding : .4em 0;
 	line-height : 1;
 	color : #666;
 }
 
-.search-result-item h3 a {
+.searchResultItem h3 a {
 	color : #333;
 }
 .emperor h2 {

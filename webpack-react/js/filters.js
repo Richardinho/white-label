@@ -63,7 +63,7 @@ export default class Filter extends React.Component {
 					</li>
 				</ul>
 				<h4 htmlFor='dynasties'>Dynasty</h4>
-				<select id='dynasties' onChange={ this.handleDynastyChange } >
+				<select value={this.props.dynasty} id='dynasties' onChange={ this.handleDynastyChange } >
 					{
 						this.props.dynasties.map( (dynasty, index) => {
 							return (
@@ -73,7 +73,7 @@ export default class Filter extends React.Component {
 					}
 				</select>
 				<h3>Sort by</h3>
-				<select id='sort-by' onChange={ this.handleSortOrderChange }>
+				<select value={this.props.sortBy} id='sort-by' onChange={ this.handleSortOrderChange }>
 					{
 						this.props.sortingOrders.map((sortOrder, index) => {
 							return (

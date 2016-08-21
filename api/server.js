@@ -76,7 +76,20 @@
 						'yearTo' : yearTo,
 						'sortBy' : sortOption,
 						minYear : -50,
-						maxYear : 400
+						maxYear : 400,
+						dynasties : [
+							'all',
+							'Julio-Claudian',
+							'Flavian',
+							'Nerva-Antonine',
+							'Severan',
+							'Gordian'
+						],
+						sortingOrders : [
+							'reign-asc',
+							'reign-desc',
+							'succession'
+						]
 					}
 				});
 			}, 1000); //  choking response time

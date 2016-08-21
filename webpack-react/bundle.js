@@ -93,12 +93,9 @@
 			_react2.default.createElement(_reactRouter.Route, { path: '/', component: _home2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/other', component: _other2.default })
 		)
-	);
+	); // switch off css modules
 
-	// Provider is a top-level component that wrapps our entire application, including
-	// the Router. We pass it a reference to the store so we can use react-redux's
-	// connect() method for Component Containers.
-	// switch off css modules
+
 	_reactDom2.default.render(_react2.default.createElement(
 		_reactRedux.Provider,
 		{ store: _store2.default },
@@ -29038,8 +29035,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import {Link} from 'react-router';
-
 
 	var Layout = function (_React$Component) {
 		_inherits(Layout, _React$Component);
@@ -29333,10 +29328,6 @@
 		return Home;
 	}(_react2.default.Component);
 
-	Home.defaultProps = {
-		name: 'Pineapple'
-	};
-
 	var mapStateToProps = function mapStateToProps(store) {
 		return {
 			results: store.resultState.results,
@@ -29381,13 +29372,12 @@
 
 
 	// module
-	exports.push([module.id, ".main__container___2_d31 {\n\twidth : 1000px;\n\tmargin : auto;\n}\n\n.main__container___2_d31 .main__results-container___xHdfJ li{\n\tmargin-bottom : 1px;\n}\n.main__foo___j8Trv{\ncolor : red;\n}\n.main__container___2_d31 .main__footer___XiNAS {\n\tclear : both;\n}\n\n.main__aside___1JBys {\n\tfloat : left;\n\twidth : 30%;\n}\n\n.main__content___2gZhg {\n\tfloat : left;\n\twidth : 70%;\n\tborder-left : solid 1px transparent;\n\tposition : relative;\n}\n\n", ""]);
+	exports.push([module.id, ".main__container___2_d31 {\n\twidth : 1000px;\n\tmargin : auto;\n}\n\n.main__container___2_d31 .main__results-container___xHdfJ li{\n\tmargin-bottom : 1px;\n}\n\n.main__container___2_d31 .main__footer___XiNAS {\n\tclear : both;\n}\n\n.main__aside___1JBys {\n\tfloat : left;\n\twidth : 30%;\n}\n\n.main__content___2gZhg {\n\tfloat : left;\n\twidth : 70%;\n\tborder-left : solid 1px transparent;\n\tposition : relative;\n}\n\n", ""]);
 
 	// exports
 	exports.locals = {
 		"container": "main__container___2_d31",
 		"results-container": "main__results-container___xHdfJ",
-		"foo": "main__foo___j8Trv",
 		"footer": "main__footer___XiNAS",
 		"aside": "main__aside___1JBys",
 		"content": "main__content___2gZhg"
@@ -29542,8 +29532,6 @@
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	//  assigns global Fetch variable since it's a polyfill
 
 	var API_URL = 'http://localhost:3000/api/emperors';
 
@@ -29794,6 +29782,7 @@
 		function Filter() {
 			_classCallCheck(this, Filter);
 
+			//  Why is it necessary to bind to this?
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Filter).call(this));
 
 			_this.handleDynastyChange = _this.handleDynastyChange.bind(_this);
@@ -29895,7 +29884,7 @@
 					),
 					_react2.default.createElement(
 						'select',
-						{ id: 'dynasties', onChange: this.handleDynastyChange },
+						{ value: this.props.dynasty, id: 'dynasties', onChange: this.handleDynastyChange },
 						this.props.dynasties.map(function (dynasty, index) {
 							return _react2.default.createElement(
 								'option',
@@ -29911,7 +29900,7 @@
 					),
 					_react2.default.createElement(
 						'select',
-						{ id: 'sort-by', onChange: this.handleSortOrderChange },
+						{ value: this.props.sortBy, id: 'sort-by', onChange: this.handleSortOrderChange },
 						this.props.sortingOrders.map(function (sortOrder, index) {
 							return _react2.default.createElement(
 								'option',
