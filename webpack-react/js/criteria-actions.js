@@ -10,28 +10,28 @@ export default {
 	yearFrom : function (yearFrom) {
 		return {
 			type : 'YEAR_FROM',
-			yearFrom : yearFrom
+			yearFrom
 		};
 	},
 
 	yearTo : function (yearTo) {
 		return {
 			type : 'YEAR_TO',
-			yearTo : yearTo
+			yearTo
 		};
 	},
 
 	dynasty : function (dynasty) {
 		return {
 			type : 'DYNASTY',
-			dynasty : dynasty
+			dynasty
 		}
 	},
 
 	sortOrder : function (sortOrder) {
 		return {
 			type : 'SORT_ORDER',
-			sortOrder : sortOrder
+			sortOrder
 		};
 	}
 };
