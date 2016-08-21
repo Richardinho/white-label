@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from './banner';
+import Banner from './components/banner';
 import styles from '../styles/layout.scss';
 
 export default class Layout extends React.Component {

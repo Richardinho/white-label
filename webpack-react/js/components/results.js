@@ -1,5 +1,5 @@
 import React from 'react';
-import { searchResultItem, addInfo } from '../styles/results.scss';
+import { searchResultItem, addInfo } from '../../styles/results.scss';
 
 export default class Results extends React.Component {
 

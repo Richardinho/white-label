@@ -76,7 +76,7 @@
 
 	var _other2 = _interopRequireDefault(_other);
 
-	var _store = __webpack_require__(280);
+	var _store = __webpack_require__(277);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -29206,31 +29206,31 @@
 
 	var _main = __webpack_require__(274);
 
-	var _results = __webpack_require__(276);
-
-	var _results2 = _interopRequireDefault(_results);
-
-	var _emperorApi = __webpack_require__(279);
+	var _emperorApi = __webpack_require__(276);
 
 	var _emperorApi2 = _interopRequireDefault(_emperorApi);
 
-	var _store = __webpack_require__(280);
+	var _store = __webpack_require__(277);
 
 	var _store2 = _interopRequireDefault(_store);
 
 	var _reactRedux = __webpack_require__(246);
 
-	var _resultsAction = __webpack_require__(284);
+	var _resultsAction = __webpack_require__(281);
 
 	var _resultsAction2 = _interopRequireDefault(_resultsAction);
 
-	var _criteriaActions = __webpack_require__(285);
+	var _criteriaActions = __webpack_require__(282);
 
 	var _criteriaActions2 = _interopRequireDefault(_criteriaActions);
 
-	var _filters = __webpack_require__(286);
+	var _filters = __webpack_require__(283);
 
 	var _filters2 = _interopRequireDefault(_filters);
+
+	var _results = __webpack_require__(286);
+
+	var _results2 = _interopRequireDefault(_results);
 
 	var _getQueryString = __webpack_require__(289);
 
@@ -29252,11 +29252,10 @@
 
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this));
 
-			_this.setYearFrom = _this.setYearFrom.bind(_this);
-			_this.setYearTo = _this.setYearTo.bind(_this);
-			_this.setDynasty = _this.setDynasty.bind(_this);
-			_this.setSortOrder = _this.setSortOrder.bind(_this);
-
+			_this.handleDynastyChange = _this.handleDynastyChange.bind(_this);
+			_this.handleSortOrderChange = _this.handleSortOrderChange.bind(_this);
+			_this.handleYearFromChange = _this.handleYearFromChange.bind(_this);
+			_this.handleYearToChange = _this.handleYearToChange.bind(_this);
 			return _this;
 		}
 
@@ -29269,27 +29268,27 @@
 				});
 			}
 		}, {
-			key: 'setYearFrom',
-			value: function setYearFrom(from) {
-				_store2.default.dispatch(_criteriaActions2.default.yearFrom(from));
+			key: 'handleDynastyChange',
+			value: function handleDynastyChange(event) {
+				_store2.default.dispatch(_criteriaActions2.default.dynasty(event.target.value));
 				this.updateResults();
 			}
 		}, {
-			key: 'setYearTo',
-			value: function setYearTo(to) {
+			key: 'handleSortOrderChange',
+			value: function handleSortOrderChange(event) {
+				_store2.default.dispatch(_criteriaActions2.default.sortOrder(event.target.value));
+				this.updateResults();
+			}
+		}, {
+			key: 'handleYearFromChange',
+			value: function handleYearFromChange(event) {
+				_store2.default.dispatch(_criteriaActions2.default.yearFrom(event.target.value));
+				this.updateResults();
+			}
+		}, {
+			key: 'handleYearToChange',
+			value: function handleYearToChange(event) {
 				_store2.default.dispatch(_criteriaActions2.default.yearTo(to));
-				this.updateResults();
-			}
-		}, {
-			key: 'setDynasty',
-			value: function setDynasty(dynasty) {
-				_store2.default.dispatch(_criteriaActions2.default.dynasty(dynasty));
-				this.updateResults();
-			}
-		}, {
-			key: 'setSortOrder',
-			value: function setSortOrder(sortOrder) {
-				_store2.default.dispatch(_criteriaActions2.default.sortOrder(sortOrder));
 				this.updateResults();
 			}
 		}, {
@@ -29311,10 +29310,10 @@
 						'div',
 						{ className: _main.aside },
 						_react2.default.createElement(_filters2.default, _extends({}, this.props.criteria, {
-							setYearFrom: this.setYearFrom,
-							setYearTo: this.setYearTo,
-							setDynasty: this.setDynasty,
-							setSortOrder: this.setSortOrder }))
+							handleYearFromChange: this.handleYearFromChange,
+							handleYearToChange: this.handleYearToChange,
+							handleDynastyChange: this.handleDynastyChange,
+							handleSortOrderChange: this.handleSortOrderChange }))
 					),
 					_react2.default.createElement(
 						'div',
@@ -29385,6 +29384,398 @@
 
 /***/ },
 /* 276 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var API_URL = 'http://localhost:3000/api/emperors';
+
+	var EmperorAPI = function () {
+		function EmperorAPI() {
+			_classCallCheck(this, EmperorAPI);
+		}
+
+		_createClass(EmperorAPI, [{
+			key: 'load',
+			value: function load() {
+				var queryString = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+
+				return fetch(API_URL + queryString).then(function (response) {
+					return response.json();
+				});
+			}
+		}]);
+
+		return EmperorAPI;
+	}();
+
+	exports.default = new EmperorAPI();
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(253);
+
+	var _reducers = __webpack_require__(278);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.createStore)(_reducers2.default);
+	exports.default = store;
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _redux = __webpack_require__(253);
+
+	var _resultReducer = __webpack_require__(279);
+
+	var _resultReducer2 = _interopRequireDefault(_resultReducer);
+
+	var _criteriaReducer = __webpack_require__(280);
+
+	var _criteriaReducer2 = _interopRequireDefault(_criteriaReducer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Combine Reducers
+	var reducers = (0, _redux.combineReducers)({
+		resultState: _resultReducer2.default,
+		criteriaState: _criteriaReducer2.default
+	});
+
+	exports.default = reducers;
+
+/***/ },
+/* 279 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case 'results':
+				return Object.assign({}, state, { results: action.results });
+			default:
+				return state;
+		}
+	};
+
+	var initialState = {
+		results: []
+	};
+
+/***/ },
+/* 280 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	exports.default = function () {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case 'INITIAL':
+				//  called to populate store from server
+				return Object.assign({}, state, action.data);
+			case 'YEAR_FROM':
+				return Object.assign({}, state, {
+					yearFrom: action.yearFrom
+				});
+			case 'YEAR_TO':
+				return Object.assign({}, state, {
+					yearTo: action.yearTo
+				});
+			case 'DYNASTY':
+				return Object.assign({}, state, {
+					dynasty: action.dynasty
+				});
+			case 'SORT_ORDER':
+				return Object.assign({}, state, {
+					sortBy: action.sortOrder
+				});
+			default:
+				return state;
+		}
+	};
+
+	var initialState = {
+		yearFrom: 0,
+		yearTo: 0,
+		minYear: -50,
+		maxYear: 400,
+		dynasties: ['foo', 'bar'],
+		dynasty: 'Julio-Claudian',
+		sortBy: 'succession',
+		sortingOrders: ['apple', 'orange']
+	};
+
+/***/ },
+/* 281 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	exports.default = function (results) {
+
+		return {
+			type: 'results',
+			results: results
+		};
+	};
+
+/***/ },
+/* 282 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+
+		initial: function initial(criteria) {
+			return {
+				type: 'INITIAL',
+				data: criteria
+			};
+		},
+
+		yearFrom: function yearFrom(_yearFrom) {
+			return {
+				type: 'YEAR_FROM',
+				yearFrom: _yearFrom
+			};
+		},
+
+		yearTo: function yearTo(_yearTo) {
+			return {
+				type: 'YEAR_TO',
+				yearTo: _yearTo
+			};
+		},
+
+		dynasty: function dynasty(_dynasty) {
+			return {
+				type: 'DYNASTY',
+				dynasty: _dynasty
+			};
+		},
+
+		sortOrder: function sortOrder(_sortOrder) {
+			return {
+				type: 'SORT_ORDER',
+				sortOrder: _sortOrder
+			};
+		}
+	};
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _reactRouter = __webpack_require__(9);
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _filters = __webpack_require__(284);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (props) {
+
+		return _react2.default.createElement(
+			'div',
+			{ className: _filters.menu },
+			_react2.default.createElement(
+				'h2',
+				null,
+				'Filters'
+			),
+			_react2.default.createElement(
+				'ul',
+				null,
+				_react2.default.createElement(
+					'h3',
+					null,
+					'Time range'
+				),
+				_react2.default.createElement(
+					'li',
+					{ className: _filters.rangeFilters },
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'year-from' },
+						'from'
+					),
+					_react2.default.createElement('input', { id: 'year-from',
+						type: 'range',
+						step: '1',
+						min: props.minYear,
+						max: props.maxYear,
+						value: props.yearFrom,
+						onChange: props.handleYearFromChange
+					}),
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'year-from' },
+						props.yearFrom
+					)
+				),
+				_react2.default.createElement(
+					'li',
+					{ className: _filters.rangeFilters },
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'year-to' },
+						'to'
+					),
+					_react2.default.createElement('input', { id: 'year-to',
+						type: 'range',
+						step: '1',
+						min: props.minYear,
+						max: props.maxYear,
+						value: props.yearTo,
+						onChange: props.handleYearToChange
+					}),
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'year-to' },
+						props.yearTo
+					)
+				)
+			),
+			_react2.default.createElement(
+				'h4',
+				{ htmlFor: 'dynasties' },
+				'Dynasty'
+			),
+			_react2.default.createElement(
+				'select',
+				{ value: props.dynasty, id: 'dynasties', onChange: props.handleDynastyChange },
+				props.dynasties.map(function (dynasty, index) {
+					return _react2.default.createElement(
+						'option',
+						{ key: index },
+						dynasty
+					);
+				})
+			),
+			_react2.default.createElement(
+				'h3',
+				null,
+				'Sort by'
+			),
+			_react2.default.createElement(
+				'select',
+				{ value: props.sortBy, id: 'sort-by', onChange: props.handleSortOrderChange },
+				props.sortingOrders.map(function (sortOrder, index) {
+					return _react2.default.createElement(
+						'option',
+						{ key: index },
+						sortOrder
+					);
+				})
+			)
+		);
+	};
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(285);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!./../node_modules/sass-loader/index.js!./filters.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!./../node_modules/sass-loader/index.js!./filters.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "ul, li {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\n.filters__menu___2OWVf {\n  font-size: 16px;\n  padding: 1.2em;\n  font-family: ubuntu;\n  background: #e6e6ff; }\n\n.filters__styled-radio-block___wi6Yg {\n  display: inline-block;\n  padding: .4em 0; }\n\n.filters__styled-radio-block___wi6Yg > input,\n.filters__styled-radio-block___wi6Yg > label {\n  vertical-align: middle; }\n\n.filters__styled-radio-block___wi6Yg .filters__styled-radio___I8Lzj {\n  background: white;\n  width: 1.2em;\n  height: 1.2em;\n  display: inline-block;\n  border: solid .1em grey;\n  border-radius: .1em;\n  position: relative; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio] {\n  display: none; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio]:checked ~ label.filters__styled-radio___I8Lzj:before {\n  content: 'x';\n  width: 100%;\n  height: 100%;\n  display: inline-block;\n  text-align: center; }\n\n.filters__rangeFilters___3eLoy {\n  padding: .4em  0; }\n\n.filters__rangeFilters___3eLoy > label,\n.filters__rangeFilters___3eLoy > input {\n  display: inline-block;\n  vertical-align: middle; }\n", ""]);
+
+	// exports
+	exports.locals = {
+		"menu": "filters__menu___2OWVf",
+		"styled-radio-block": "filters__styled-radio-block___wi6Yg",
+		"styled-radio": "filters__styled-radio___I8Lzj",
+		"rangeFilters": "filters__rangeFilters___3eLoy"
+	};
+
+/***/ },
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29399,7 +29790,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _results = __webpack_require__(277);
+	var _results = __webpack_require__(287);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29476,13 +29867,13 @@
 	exports.default = Results;
 
 /***/ },
-/* 277 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(278);
+	var content = __webpack_require__(288);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -29502,7 +29893,7 @@
 	}
 
 /***/ },
-/* 278 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -29517,450 +29908,6 @@
 		"searchResultItem": "results__searchResultItem___1t5sl",
 		"addInfo": "results__addInfo___lNmvq",
 		"emperor": "results__emperor___ZlgY7"
-	};
-
-/***/ },
-/* 279 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var API_URL = 'http://localhost:3000/api/emperors';
-
-	var EmperorAPI = function () {
-		function EmperorAPI() {
-			_classCallCheck(this, EmperorAPI);
-		}
-
-		_createClass(EmperorAPI, [{
-			key: 'load',
-			value: function load() {
-				var queryString = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-
-				return fetch(API_URL + queryString).then(function (response) {
-					return response.json();
-				});
-			}
-		}]);
-
-		return EmperorAPI;
-	}();
-
-	exports.default = new EmperorAPI();
-
-/***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _redux = __webpack_require__(253);
-
-	var _reducers = __webpack_require__(281);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var store = (0, _redux.createStore)(_reducers2.default);
-	exports.default = store;
-
-/***/ },
-/* 281 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _redux = __webpack_require__(253);
-
-	var _resultReducer = __webpack_require__(282);
-
-	var _resultReducer2 = _interopRequireDefault(_resultReducer);
-
-	var _criteriaReducer = __webpack_require__(283);
-
-	var _criteriaReducer2 = _interopRequireDefault(_criteriaReducer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// Combine Reducers
-	var reducers = (0, _redux.combineReducers)({
-		resultState: _resultReducer2.default,
-		criteriaState: _criteriaReducer2.default
-	});
-
-	exports.default = reducers;
-
-/***/ },
-/* 282 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	exports.default = function () {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-		var action = arguments[1];
-
-		switch (action.type) {
-			case 'results':
-				return Object.assign({}, state, { results: action.results });
-			default:
-				return state;
-		}
-	};
-
-	var initialState = {
-		results: []
-	};
-
-/***/ },
-/* 283 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	exports.default = function () {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-		var action = arguments[1];
-
-		switch (action.type) {
-			case 'INITIAL':
-				//  called to populate store from server
-				return Object.assign({}, state, action.data);
-			case 'YEAR_FROM':
-				return Object.assign({}, state, {
-					yearFrom: action.yearFrom
-				});
-			case 'YEAR_TO':
-				return Object.assign({}, state, {
-					yearTo: action.yearTo
-				});
-			case 'DYNASTY':
-				return Object.assign({}, state, {
-					dynasty: action.dynasty
-				});
-			case 'SORT_ORDER':
-				return Object.assign({}, state, {
-					sortBy: action.sortOrder
-				});
-			default:
-				return state;
-		}
-	};
-
-	var initialState = {
-		yearFrom: 0,
-		yearTo: 0,
-		minYear: -50,
-		maxYear: 400,
-		dynasties: ['foo', 'bar'],
-		dynasty: 'Julio-Claudian',
-		sortBy: 'succession',
-		sortingOrders: ['apple', 'orange']
-	};
-
-/***/ },
-/* 284 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	exports.default = function (results) {
-
-		return {
-			type: 'results',
-			results: results
-		};
-	};
-
-/***/ },
-/* 285 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-
-		initial: function initial(criteria) {
-			return {
-				type: 'INITIAL',
-				data: criteria
-			};
-		},
-
-		yearFrom: function yearFrom(_yearFrom) {
-			return {
-				type: 'YEAR_FROM',
-				yearFrom: _yearFrom
-			};
-		},
-
-		yearTo: function yearTo(_yearTo) {
-			return {
-				type: 'YEAR_TO',
-				yearTo: _yearTo
-			};
-		},
-
-		dynasty: function dynasty(_dynasty) {
-			return {
-				type: 'DYNASTY',
-				dynasty: _dynasty
-			};
-		},
-
-		sortOrder: function sortOrder(_sortOrder) {
-			return {
-				type: 'SORT_ORDER',
-				sortOrder: _sortOrder
-			};
-		}
-	};
-
-/***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _reactRouter = __webpack_require__(9);
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _filters = __webpack_require__(287);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Filter = function (_React$Component) {
-		_inherits(Filter, _React$Component);
-
-		function Filter() {
-			_classCallCheck(this, Filter);
-
-			//  Why is it necessary to bind to this?
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Filter).call(this));
-
-			_this.handleDynastyChange = _this.handleDynastyChange.bind(_this);
-			_this.handleSortOrderChange = _this.handleSortOrderChange.bind(_this);
-			_this.handleYearFromChange = _this.handleYearFromChange.bind(_this);
-			_this.handleYearToChange = _this.handleYearToChange.bind(_this);
-			return _this;
-		}
-
-		_createClass(Filter, [{
-			key: 'handleDynastyChange',
-			value: function handleDynastyChange(event) {
-				this.props.setDynasty(event.target.value);
-			}
-		}, {
-			key: 'handleSortOrderChange',
-			value: function handleSortOrderChange(event) {
-				this.props.setSortOrder(event.target.value);
-			}
-		}, {
-			key: 'handleYearFromChange',
-			value: function handleYearFromChange(event) {
-				this.props.setYearFrom(event.target.value);
-			}
-		}, {
-			key: 'handleYearToChange',
-			value: function handleYearToChange(event) {
-				this.props.setYearTo(event.target.value);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-
-				return _react2.default.createElement(
-					'div',
-					{ className: _filters.menu },
-					_react2.default.createElement(
-						'h2',
-						null,
-						'Filters'
-					),
-					_react2.default.createElement(
-						'ul',
-						null,
-						_react2.default.createElement(
-							'h3',
-							null,
-							'Time range'
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: _filters.rangeFilters },
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'year-from' },
-								'from'
-							),
-							_react2.default.createElement('input', { id: 'year-from',
-								type: 'range',
-								step: '1',
-								min: this.props.minYear,
-								max: this.props.maxYear,
-								value: this.props.yearFrom,
-								onChange: this.handleYearFromChange
-							}),
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'year-from' },
-								this.props.yearFrom
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: _filters.rangeFilters },
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'year-to' },
-								'to'
-							),
-							_react2.default.createElement('input', { id: 'year-to',
-								type: 'range',
-								step: '1',
-								min: this.props.minYear,
-								max: this.props.maxYear,
-								value: this.props.yearTo,
-								onChange: this.handleYearToChange
-							}),
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'year-to' },
-								this.props.yearTo
-							)
-						)
-					),
-					_react2.default.createElement(
-						'h4',
-						{ htmlFor: 'dynasties' },
-						'Dynasty'
-					),
-					_react2.default.createElement(
-						'select',
-						{ value: this.props.dynasty, id: 'dynasties', onChange: this.handleDynastyChange },
-						this.props.dynasties.map(function (dynasty, index) {
-							return _react2.default.createElement(
-								'option',
-								{ key: index },
-								dynasty
-							);
-						})
-					),
-					_react2.default.createElement(
-						'h3',
-						null,
-						'Sort by'
-					),
-					_react2.default.createElement(
-						'select',
-						{ value: this.props.sortBy, id: 'sort-by', onChange: this.handleSortOrderChange },
-						this.props.sortingOrders.map(function (sortOrder, index) {
-							return _react2.default.createElement(
-								'option',
-								{ key: index },
-								sortOrder
-							);
-						})
-					)
-				);
-			}
-		}]);
-
-		return Filter;
-	}(_react2.default.Component);
-
-	exports.default = Filter;
-
-/***/ },
-/* 287 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(288);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!./../node_modules/sass-loader/index.js!./filters.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!./../node_modules/sass-loader/index.js!./filters.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 288 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(3)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "ul, li {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\n.filters__menu___2OWVf {\n  font-size: 16px;\n  padding: 1.2em;\n  font-family: ubuntu;\n  background: #e6e6ff; }\n\n.filters__styled-radio-block___wi6Yg {\n  display: inline-block;\n  padding: .4em 0; }\n\n.filters__styled-radio-block___wi6Yg > input,\n.filters__styled-radio-block___wi6Yg > label {\n  vertical-align: middle; }\n\n.filters__styled-radio-block___wi6Yg .filters__styled-radio___I8Lzj {\n  background: white;\n  width: 1.2em;\n  height: 1.2em;\n  display: inline-block;\n  border: solid .1em grey;\n  border-radius: .1em;\n  position: relative; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio] {\n  display: none; }\n\n.filters__styled-radio-block___wi6Yg input[type=radio]:checked ~ label.filters__styled-radio___I8Lzj:before {\n  content: 'x';\n  width: 100%;\n  height: 100%;\n  display: inline-block;\n  text-align: center; }\n\n.filters__rangeFilters___3eLoy {\n  padding: .4em  0; }\n\n.filters__rangeFilters___3eLoy > label,\n.filters__rangeFilters___3eLoy > input {\n  display: inline-block;\n  vertical-align: middle; }\n", ""]);
-
-	// exports
-	exports.locals = {
-		"menu": "filters__menu___2OWVf",
-		"styled-radio-block": "filters__styled-radio-block___wi6Yg",
-		"styled-radio": "filters__styled-radio___I8Lzj",
-		"rangeFilters": "filters__rangeFilters___3eLoy"
 	};
 
 /***/ },

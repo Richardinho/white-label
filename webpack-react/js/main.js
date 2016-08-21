@@ -8,8 +8,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import Layout from './layout';
-import Home from './home';
-import Other from './other';
+import Home from './components/home';
+import Other from './components/other';
 import store from './store';
 
 let router = (

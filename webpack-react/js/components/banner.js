@@ -1,5 +1,5 @@
 import React  from 'react';
-import { banner } from '../styles/banner.scss';
+import { banner } from '../../styles/banner.scss';
 
 export default (props) => {
 	return (
